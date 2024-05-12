@@ -14,7 +14,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        return view('pacientes.index');
+        $datos['pacientes']=Paciente::paginate(5);
+        return view('pacientes.index', $datos);
     }
 
     /**
