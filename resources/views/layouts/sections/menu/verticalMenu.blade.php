@@ -12,7 +12,7 @@ $configData = Helper::appClasses();
         @include('_partials.macros')
       </span>
       {{-- <span class="app-brand-text demo menu-text fw-bold ms-2">{{config('variables.templateName')}}</span> --}}
-      <span class="app-brand-text demo menu-text fw-bold ms-2">ERDI</span>
+      <span class="app-brand-text demo menu-text fw-bold ms-2">Clinica</span>
     </a>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -88,6 +88,10 @@ $configData = Helper::appClasses();
     {{-- seccion nueva para ruta --}}
     <li class="menu-item">
       <a href="{{url('/pacientes') }}" class="menu-link app-brand-link"><i class="{{ $menu->icon }}"></i>Gestionar Pacientes</a>
+    </li>
+
+    <li class="menu-item">
+      <a href="{{url('/pacientes/create') }}" class="menu-link app-brand-link"><i class="{{ $menu->icon }}"></i>Crear Pacientes</a>
     </li>
   </ul>
 
