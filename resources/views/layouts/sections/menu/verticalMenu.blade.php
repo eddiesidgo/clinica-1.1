@@ -84,6 +84,11 @@ $configData = Helper::appClasses();
     </li>
     @endif
     @endforeach
+    
+    {{-- seccion nueva para ruta --}}
+    <li class="menu-item">
+      <a href="{{url('/pacientes') }}" class="menu-link app-brand-link"><i class="{{ $menu->icon }}"></i>Gestionar Pacientes</a>
+    </li>
   </ul>
 
 </aside>

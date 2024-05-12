@@ -1,0 +1,1 @@
+Formulario que se reutilizara en Create y Edit, osea se va a heredar

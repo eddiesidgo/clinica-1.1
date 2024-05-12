@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PacienteController;
+use App\Models\Paciente;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,14 @@ $controller_path = 'App\Http\Controllers';
 
     Route::get('/', $controller_path . '\pages\HomePage@index')->name('pages-home');
     Route::get('/page-2', $controller_path . '\pages\Page2@index')->name('pages-page-2');
+
+    // Route::get('/pacientes', function () {
+    //     return view('pacientes.index');
+    // });
+
+    //Route::get('pacientes/create', [PacienteController::class,'create']);
+
+    Route::resource('pacientes', PacienteController::class);
 
     
 });
