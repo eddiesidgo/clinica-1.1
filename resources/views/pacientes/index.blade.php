@@ -27,7 +27,13 @@
             <td>{{$paciente->direccion}}</td>
             <td>{{$paciente->telefono}}</td>
             <td>{{$paciente->correo_electronico}}</td>
-            <td>Editar | Borrar</td>     
+            <td>Editar | 
+            <form action="{{ url('/pacientes/'.$paciente->id) }}" method="POST">
+                @csrf
+                {{ method_field('DELETE') }}
+                <input type="submit" class="form-control" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
+            </form>    
+            </td>     
         </tr>
         @endforeach
     </tbody>

@@ -81,8 +81,10 @@ class PacienteController extends Controller
      * @param  \App\Models\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Paciente $paciente)
+    public function destroy($id)
     {
         //
+        Paciente::destroy($id);
+        return redirect('/pacientes');
     }
 }
