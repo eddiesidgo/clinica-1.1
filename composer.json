@@ -16,7 +16,8 @@
     "laravel/sanctum": "^2.14",
     "laravel/tinker": "^2.7",
     "livewire/livewire": "^2.5",
-    "nunomaduro/laravel-desktop-notifier": "^2.6"
+    "nunomaduro/laravel-desktop-notifier": "^2.6",
+    "spatie/laravel-permission": "^6.7"
   },
   "require-dev": {
     "fakerphp/faker": "^1.9.1",
@@ -53,7 +54,7 @@
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ],
-    "post-create-project-cmd": [
+    "post-create-project-cmd": [  
       "@php artisan key:generate --ansi"
     ]
   },
