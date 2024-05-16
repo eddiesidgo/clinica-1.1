@@ -4,7 +4,13 @@
 
 @section('content')
 <h4>Gestionar Pacientes</h4>
-<h4>Pacientes registrados: </h4>
+
+@if (Session::has('mensaje'))
+{{ Session::get('mensaje') }}
+
+@endif
+
+<a href="{{url('/pacientes/create') }}" class="btn btn-primary">Nuevo Paciente</a> <br>
 
 <table class="table">
     <thead>
