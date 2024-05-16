@@ -27,11 +27,13 @@
             <td>{{$paciente->direccion}}</td>
             <td>{{$paciente->telefono}}</td>
             <td>{{$paciente->correo_electronico}}</td>
-            <td>Editar | 
+            <td>
+                <a href="{{ url('/pacientes/'.$paciente->id.'/edit') }}" class="btn btn-link">Editar</a>
+                | 
             <form action="{{ url('/pacientes/'.$paciente->id) }}" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
-                <input type="submit" class="form-control" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
+                <input type="submit" class="btn btn-link" onclick="return confirm('¿Deseas borrar?')" value="Borrar">
             </form>    
             </td>     
         </tr>
