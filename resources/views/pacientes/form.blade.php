@@ -5,7 +5,7 @@
         name="Nombre"
         id="Nombre"
         placeholder=""
-        value="{{ $paciente->nombre }}"
+        value="{{ isset($paciente->nombre)?$paciente->nombre:'' }}"
     />
 
     <label for="Genero" class="form-label">Genero</label>
@@ -15,7 +15,7 @@
         name="Genero"
         id="Genero"
         placeholder=""
-        value="{{ $paciente->genero }}"
+        value="{{ isset($paciente->genero)?$paciente->genero:'' }}"
     />
 
     <label for="Direccion" class="form-label">Direccion</label>
@@ -25,7 +25,7 @@
         name="Direccion"
         id="Direccion"
         placeholder=""
-        value="{{ $paciente->direccion }}"
+        value="{{ isset($paciente->direccion)?$paciente->direccion:'' }}"
     />
 
     <label for="Telefono" class="form-label">Telefono</label>
@@ -35,7 +35,7 @@
         name="Telefono"
         id="Telefono"
         placeholder=""
-        value="{{ $paciente->telefono }}"
+        value="{{ isset($paciente->telefono)?$paciente->telefono:'' }}"
     />
 
     <label for="correo_electronico" class="form-label">Correo Electronico</label>
@@ -45,7 +45,7 @@
         name="correo_electronico"
         id="correo_electronico"
         placeholder=""
-        value="{{ $paciente->correo_electronico }}"
+        value="{{ isset($paciente->correo_electronico)?$paciente->correo_electronico:'' }}"
     /> <br>
 
     <input
@@ -53,3 +53,5 @@
         type="submit"
         value="Guardar Datos"
     />
+
+    <a href="{{url('/pacientes') }}" class="btn btn-dark">Regresar</a> <br>

@@ -38,7 +38,11 @@ class PacienteController extends Controller
     {
         $datosPaciente = request()->except('_token');
         Paciente::insert($datosPaciente);
-        return response()->json($datosPaciente);
+        //return response()->json($datosPaciente);
+
+        //return redirect('pacientes')->with('mensaje', 'Empleado agregado con exito');
+
+        return redirect('pacientes');
     }
 
     /**
@@ -72,9 +76,14 @@ class PacienteController extends Controller
      * @param  \App\Models\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Paciente $paciente)
+    public function update(Request $request, $id)
     {
         //
+        $datosPaciente = request()->except('_token', '_method');
+        Paciente::where('id', '=', $id)->update($datosPaciente);
+
+        $paciente=Paciente::findOrFail($id);
+        return view ('pacientes.edit', compact('paciente'));
     }
 
     /**

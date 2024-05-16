@@ -3,7 +3,7 @@
 @section('title', 'Pacientes')
 
 @section('content')
-<h4>Registrar Pacientes: </h4>
+<h4>Registrar Nuevo Paciente: </h4>
 
 <form action="{{ url('/pacientes') }}" method="POST" class="mb-3">
     @csrf
