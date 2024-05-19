@@ -12,8 +12,10 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 
+
 class User extends Authenticatable
 {
+    use HasRoles;
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;

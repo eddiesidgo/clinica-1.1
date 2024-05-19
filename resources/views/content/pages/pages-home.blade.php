@@ -7,7 +7,16 @@ $configData = Helper::appClasses();
 @section('title', 'Home')
 
 @section('content')
-<h4>Home Page</h4>
-<h4>Cambios desde local</h4>
+<h4>Página Principal</h4>
+<h4>Este Contenido es Público</h4>
+@role('admin')
+<h5> Solo Admin</h5>
+@endrole
+@role('secre')
+<h5> Solo Secretaria</h5>
+@endrole
+@role('doctoe')
+<h5> Solo Doctor</h5>
+@endrole
 
 @endsection
