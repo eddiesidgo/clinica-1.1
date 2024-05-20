@@ -7,8 +7,8 @@
         placeholder=""
         value="{{ isset($paciente->nombre)?$paciente->nombre:'' }}"
     />
-
-    <label for="Genero" class="form-label">Genero</label>
+<?php
+    /*<label for="Genero" class="form-label">Genero</label>
     <input
         type="text"
         class="form-control"
@@ -16,7 +16,18 @@
         id="Genero"
         placeholder=""
         value="{{ isset($paciente->genero)?$paciente->genero:'' }}"
-    />
+    />*/
+?>
+    <label for="Genero" class="form-label">Género</label>
+        <select
+            class="form-control"
+            name="Genero"
+            id="Genero"
+        >
+            <option value="Masculino" {{ isset($paciente->genero) && $paciente->genero == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+            <option value="Femenino" {{ isset($paciente->genero) && $paciente->genero == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+            <option value="No Binario" {{ isset($paciente->genero) && $paciente->genero == 'No Binario' ? 'selected' : '' }}>No Binario</option>
+        </select>
 
     <label for="Direccion" class="form-label">Direccion</label>
     <input
@@ -30,7 +41,7 @@
 
     <label for="Telefono" class="form-label">Telefono</label>
     <input
-        type="text"
+        type="number"
         class="form-control"
         name="Telefono"
         id="Telefono"
