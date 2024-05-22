@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExpedienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
 use App\Models\Paciente;
@@ -39,6 +40,7 @@ $controller_path = 'App\Http\Controllers';
     //Route::get('pacientes/create', [PacienteController::class,'create']);
 
     Route::resource('pacientes', PacienteController::class);
+    Route::resource('expediente', ExpedienteController::class);
 
     
 });

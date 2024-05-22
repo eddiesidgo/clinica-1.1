@@ -9,8 +9,9 @@
 {{ Session::get('mensaje') }}
 @endif
 
-<a href="{{url('/pacientes/create') }}" class="btn btn-primary">Nuevo Paciente</a> <br>
+<a href="{{url('/pacientes/create') }}" class="btn btn-primary">Nuevo Paciente</a>
 
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -40,6 +41,9 @@
                     @csrf
                     {{ method_field('DELETE') }}
                 </form>
+                |
+                <a href="{{ url('/expediente') }}" class="btn btn-link">Expediente</a> <!-- New Button -->
+
             </td>
         </tr>
         @endforeach

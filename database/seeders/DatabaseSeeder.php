@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Paciente;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -16,6 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(30)->create();
 
-        $this->call(RolSeeder::class);
+        $this->call(RoleSedeer::class);
+
+        $this->call(UserSeeder::class);
+
+
     }
 }
