@@ -9,7 +9,7 @@
 {{ Session::get('mensaje') }}
 @endif
 
-<a href="{{url('/pacientes/create') }}" class="btn btn-primary">Nuevo Paciente</a>
+<a href="{{url('/pacientes/create') }}" class="btn btn-primary">Nuevo Paciente</a> <br>
 
 <br>
 <table class="table">
@@ -21,7 +21,7 @@
             <th>Direccion</th>
             <th>Telefono</th>
             <th>Correo Electronico</th>
-            <td>Acciones</td>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
