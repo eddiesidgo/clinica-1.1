@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ExpedienteController;
+use App\Http\Controllers\RecetasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,6 @@ $controller_path = 'App\Http\Controllers';
     Route::resource('pacientes', PacienteController::class);
     Route::resource('expediente', ExpedienteController::class);
     Route::resource('events', EventController::class);
-
+    Route::resource('Recetas', RecetasController::class);
     
 });

@@ -2,9 +2,45 @@
   "menu": [
     {
       "url": "/",
-      "name": "Home",
-      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "name": "Inicio",
+      "icon": "menu-icon tf-icons bx bxs-home",
       "slug": "pages-home"
+    },
+    { 
+      "url": "/pacientes",
+      "name": "Gestión de pacientes",
+      "icon": "menu-icon tf-icons bx bxs-contact",
+      "slug": "pacientes"
+    },
+    {  
+      "url": "/events",
+      "name": "Citas médicas",
+      "icon": "menu-icon tf-icons bx bxs-notepad",
+      "slug": "events"
+    },
+    {
+      "url": "/",
+      "name": "Expedientes",
+      "icon": "menu-icon tf-icons bx bxs-book-content",
+      "slug": ""
+    },
+    { 
+      "url": "/Recetas",
+      "name": "Recetas médicas",
+      "icon": "menu-icon tf-icons bx bx-file",
+      "slug": "Recetas"
+    },
+    { 
+      "url": "/Usuarios",
+      "name": "Usuarios",
+      "icon": "menu-icon tf-icons bx bxs-user-plus",
+      "slug": "Usuarios"
+    },
+    {  
+      "url": "/roles",
+      "name": "Roles de usuario",
+      "icon": "menu-icon tf-icons bx bxs-group",
+      "slug": "roles"
     }
   ]
 }

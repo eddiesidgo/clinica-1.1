@@ -20,10 +20,7 @@ $customizerHidden = 'customizer-hide';
       <div class="flex-row text-center mx-auto">
         {{-- <img src="{{asset('assets/img/pages/register-'.$configData['style'].'.png')}}" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/register-light.png" data-app-dark-img="pages/register-dark.png"> --}}
         <div class="mx-auto">
-          <h3>A few clicks to get started 🚀</h3>
-          <p>
-            Let’s get started with your 14 days free trial and <br> start building your application today.
-          </p>
+          <!-- CONTENIDO EN DIV MAYOR -->
         </div>
       </div>
     </div>
@@ -42,14 +39,13 @@ $customizerHidden = 'customizer-hide';
         <!-- /Logo -->
 
         <!-- Register Card -->
-        <h4 class="mb-2">Adventure starts here 🚀</h4>
-        <p class="mb-4">Make your app management easy and fun!</p>
+        <p class="mb-4">Ingrese un nuevo usuario</p>
 
         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
           @csrf
           <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="username" name="name" placeholder="johndoe" autofocus value="{{ old('name') }}" />
+            <label for="username" class="form-label">Nombre de usuario</label>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="username" name="name" placeholder="Juaquin12" autofocus value="{{ old('name') }}" />
             @error('name')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -57,8 +53,8 @@ $customizerHidden = 'customizer-hide';
             @enderror
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@example.com" value="{{ old('email') }}" />
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="john@gmail.com" value="{{ old('email') }}" />
             @error('email')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -66,7 +62,7 @@ $customizerHidden = 'customizer-hide';
             @enderror
           </div>
           <div class="mb-3 form-password-toggle">
-            <label class="form-label" for="password">Password</label>
+            <label class="form-label" for="password">Contraseña</label>
             <div class="input-group input-group-merge @error('password') is-invalid @enderror">
               <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
               <span class="input-group-text cursor-pointer">
@@ -81,7 +77,7 @@ $customizerHidden = 'customizer-hide';
           </div>
 
           <div class="mb-3 form-password-toggle">
-            <label class="form-label" for="password-confirm">Confirm Password</label>
+            <label class="form-label" for="password-confirm">Confirmar contraseña</label>
             <div class="input-group input-group-merge">
               <input type="password" id="password-confirm" class="form-control" name="password_confirmation" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
               <span class="input-group-text cursor-pointer">
@@ -105,38 +101,17 @@ $customizerHidden = 'customizer-hide';
             </div>
           </div>
           @endif
-          <button type="submit" class="btn btn-primary d-grid w-100">Sign up</button>
+          <button type="submit" class="btn btn-info d-grid w-100">Crear usuario</button>
         </form>
-
         <p class="text-center mt-2">
-          <span>Already have an account?</span>
           @if (Route::has('login'))
           <a href="{{ route('login') }}">
-            <span>Sign in instead</span>
+            <span>Iniciar sesión</span>
           </a>
           @endif
         </p>
-
-        <div class="divider my-4">
-          <div class="divider-text">or</div>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
-            <i class="tf-icons bx bxl-facebook"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
-            <i class="tf-icons bx bxl-google-plus"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-            <i class="tf-icons bx bxl-twitter"></i>
-          </a>
-        </div>
       </div>
     </div>
-    <!-- Register Card -->
   </div>
 </div>
 @endsection

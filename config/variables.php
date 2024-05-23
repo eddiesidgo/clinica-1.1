@@ -1,28 +1,22 @@
 <?php
-  // Variables
+  // Variables de la página
   return [
-    "creatorName" => "Eddie Sidgo",
-    "creatorUrl" => "https://me.elrincondeisma.com/",
-    "templateName" => "ERDI",
-    "templateSuffix" => "Clinica",
+    "creatorName" => "LawLogic Innovations S.A. de C.V.",
+    "creatorUrl" => "https://github.com/eddiesidgo/clinica-1.1",
+    "templateName" => "MediSphere",
+    "templateSuffix" => "Clinic",
     "templateVersion" => "1.0.0",
     "templateFree" => true,
     "templateDescription" => "Start your development with a Dashboard for Bootstrap 5",
     "templateKeyword" => "dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5",
-    "licenseUrl" => "",
-    "livePreview" => "",
-    "productPage" => "",
     "support" => "",
     "moreThemes" => "",
     "documentation" => "",
     "generator" => "",
     "changelog" => "",
-    "repository" => "",
-    "gitAuthor" => "",
-    "gitRepo" => "",
-    "facebookUrl" => "",
-    "twitterUrl" => "",
-    "githubUrl" => "",
+    "repository" => "https://github.com/Yugen15/Laboratorio2.git",
+    "gitAuthor" => "https://github.com/joss68/clinica-1.1",
+    "gitRepo" => "https://github.com/Yugen15/Laboratorio2.git",
+    "githubUrl" => "", 
     "dribbbleUrl" => "",
-    "instagramUrl" => ""
   ];

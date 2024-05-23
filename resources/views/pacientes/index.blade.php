@@ -34,15 +34,17 @@
             <td>{{$paciente->telefono}}</td>
             <td>{{$paciente->correo_electronico}}</td>
             <td>
-                <a href="{{ url('/pacientes/'.$paciente->id.'/edit') }}" class="btn btn-link">Editar</a>
-                |
-                <button class="btn btn-link" onclick="confirmDelete('{{ $paciente->id }}')">Borrar</button>
+                <a style='font-size: 11px;' href="{{ url('/pacientes/'.$paciente->id.'/edit') }}" class="btn btn-info">Editar</a>
+                <br>
+                <br>
+                <button   style='font-size: 11px;' class="btn btn-danger" onclick="confirmDelete('{{ $paciente->id }}')">Borrar</button>
                 <form id="delete-form-{{ $paciente->id }}" action="{{ url('/pacientes/'.$paciente->id) }}" method="POST" style="display: none;">
                     @csrf
                     {{ method_field('DELETE') }}
                 </form>
-                |
-                <a href="{{ url('/expediente') }}" class="btn btn-link">Expediente</a> <!-- New Button -->
+                <br>
+                <br>
+                <a style='font-size: 11px;' href="{{ url('/expediente') }}" class="btn btn-success">Expediente</a> <!-- New Button -->
 
             </td>
         </tr>

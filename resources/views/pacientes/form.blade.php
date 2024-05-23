@@ -60,9 +60,9 @@
     /> <br>
 
     <input
-        class="btn btn-primary"
+        class="btn btn-info"
         type="submit"
         value="Guardar Datos"
     />
 
-    <a href="{{url('/pacientes') }}" class="btn btn-dark">Regresar</a> <br>
+    <a href="{{url('/pacientes') }}" class="btn btn-warning">Regresar</a> <br>

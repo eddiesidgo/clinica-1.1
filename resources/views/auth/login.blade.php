@@ -20,10 +20,7 @@ $customizerHidden = 'customizer-hide';
       <div class="flex-row text-center mx-auto">
         {{-- <img src="{{asset('assets/img/pages/login-'.$configData['style'].'.png')}}" alt="Auth Cover Bg color" width="520" class="img-fluid authentication-cover-img" data-app-light-img="pages/login-light.png" data-app-dark-img="pages/login-dark.png"> --}}
         <div class="mx-auto">
-          <h3>Discover the powerful admin template 🥳</h3>
-          <p>
-            Perfectly suited for all level of developers which helps you to <br> kick start your next big projects & Applications.
-          </p>
+ 
         </div>
       </div>
     </div>
@@ -40,9 +37,7 @@ $customizerHidden = 'customizer-hide';
           </a>
         </div>
         <!-- /Logo -->
-        <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
-        <p class="mb-4">Please sign-in to your account and start the adventure</p>
-
+        <h4 class="mb-2">BIENVENIDO A {{config('variables.templateName')}}!👋</h4>
         @if (session('status'))
         <div class="alert alert-success mb-1 rounded-0" role="alert">
           <div class="alert-body">
@@ -54,8 +49,8 @@ $customizerHidden = 'customizer-hide';
         <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
           @csrf
           <div class="mb-3">
-            <label for="login-email" class="form-label">Email</label>
-            <input type="text" class="form-control @error('email') is-invalid @enderror" id="login-email" name="email" placeholder="john@example.com" autofocus value="{{ old('email') }}">
+            <label for="login-email" class="form-label">Correo electrónico</label>
+            <input type="text" class="form-control @error('email') is-invalid @enderror" id="login-email" name="email" placeholder="js.medisphere@gmail.com" autofocus value="{{ old('email') }}">
             @error('email')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -64,10 +59,10 @@ $customizerHidden = 'customizer-hide';
           </div>
           <div class="mb-3 form-password-toggle">
             <div class="d-flex justify-content-between">
-              <label class="form-label" for="login-password">Password</label>
+              <label class="form-label" for="login-password">Contraseña</label>
               @if (Route::has('password.request'))
               <a href="{{ route('password.request') }}">
-                <small>Forgot Password?</small>
+                <small>¿Olvidó su contraseña?</small>
               </a>
               @endif
             </div>
@@ -85,42 +80,23 @@ $customizerHidden = 'customizer-hide';
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="remember-me" name="remember" {{ old('remember') ? 'checked' : '' }}>
               <label class="form-check-label" for="remember-me">
-                Remember Me
+                Recuérdame
               </label>
             </div>
           </div>
-          <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+          <button class="btn btn-info d-grid w-100" type="submit">Inicia sesión</button>
         </form>
-
+        <div class="divider my-4">
+          <div class="divider-text">o</div>
+        </div>
         <p class="text-center">
-          <span>New on our platform?</span>
           @if (Route::has('register'))
           <a href="{{ route('register') }}">
-            <span>Create an account</span>
+            <span>¿Desea agregar un nuevo usuario?</span>
           </a>
           @endif
         </p>
-
-        <div class="divider my-4">
-          <div class="divider-text">or</div>
-        </div>
-
-        <div class="d-flex justify-content-center">
-          <a href="javascript:;" class="btn btn-icon btn-label-facebook me-3">
-            <i class="tf-icons bx bxl-facebook"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-google-plus me-3">
-            <i class="tf-icons bx bxl-google-plus"></i>
-          </a>
-
-          <a href="javascript:;" class="btn btn-icon btn-label-twitter">
-            <i class="tf-icons bx bxl-twitter"></i>
-          </a>
-        </div>
       </div>
-    </div>
-    <!-- /Login -->
   </div>
 </div>
 @endsection
