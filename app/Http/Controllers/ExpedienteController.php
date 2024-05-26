@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Expediente;
 use Illuminate\Http\Request;
-
+use App\Models\Paciente;
 class ExpedienteController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class ExpedienteController extends Controller
      */
     public function index()
     {
-        $daatos['expedientes']=Expediente::paginate(5);
+        $daatos['expedientes'] = Expediente::with('paciente')->paginate(5);
         return view('expedientes.index', $daatos);
     }
 
@@ -25,7 +25,8 @@ class ExpedienteController extends Controller
      */
     public function create()
     {
-        return view('expedientes.create');
+        $dat = Paciente::all();
+        return view('expedientes.create', compact('dat'));
     }
 
     /**
@@ -36,8 +37,9 @@ class ExpedienteController extends Controller
      */
     public function store(Request $request)
     {
-        $datosExpediente = request()->except('_token');
+        $datosExpediente = $request->except('_token');
         Expediente::insert($datosExpediente);
+        return redirect('expedientes');
         //return response()->json($datosExpediente);
 
         //return redirect('expedientes')->with('mensaje', 'Empleado agregado con exito');
@@ -51,7 +53,7 @@ class ExpedienteController extends Controller
      * @param  \App\Models\Expediente  $Expediente
      * @return \Illuminate\Http\Response
      */
-    public function show(Expediente $Expediente)
+    public function show(Expediente $expedientes)
     {
         //
     }
