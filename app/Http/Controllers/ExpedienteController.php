@@ -14,8 +14,8 @@ class ExpedienteController extends Controller
      */
     public function index()
     {
-        $datos['expedientes']=Expediente::paginate(5);
-        return view('expedientes.index', $datos);
+        $daatos['expedientes']=Expediente::paginate(5);
+        return view('expedientes.index', $daatos);
     }
 
     /**

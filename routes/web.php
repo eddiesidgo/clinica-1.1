@@ -40,10 +40,13 @@ $controller_path = 'App\Http\Controllers';
     // });
 
     //Route::get('pacientes/create', [PacienteController::class,'create']);
+    /* Route::get('expedientes', function(){
+        return view('expedientes.index');
+    }); */
 
     Route::resource('pacientes', PacienteController::class);
-    Route::resource('expedientes', ExpedienteController::class);
     Route::resource('events', EventController::class);
+    Route::resource('expedientes', ExpedienteController::class);
     Route::resource('Recetas', RecetasController::class);
     
 });
