@@ -36,6 +36,9 @@
                 <td>{{ $expediente->histquirurgico }}</td>
                 <td>
                     <br><br>
+                    <a style='font-size: 11px;' href="{{ url('/expedientes/'.$expediente->idExp.'/edit') }}" class="btn btn-info">Editar</a>
+                    <br>
+                    <br>
                     <button style="font-size: 11px;" class="btn btn-danger" onclick="confirmDelete('{{ $expediente->idExp }}')">Borrar</button>
                     <form id="delete-form-{{ $expediente->idExp }}" action="{{ url('/expedientes/' . $expediente->idExp) }}" method="POST" style="display: none;">
                         @csrf

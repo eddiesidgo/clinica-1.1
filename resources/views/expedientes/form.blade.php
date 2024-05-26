@@ -2,59 +2,41 @@
 <?php
 ?>
 <!-- Aqui el select llama el nombre del paciente -->
+<div class="form-group">
     <label for="Paciente" class="form-label">Seleccione el Paciente:</label>
-    <select class="form-control" name="id_Paciente" id="idExp">
+    <select class="form-control" name="id_Paciente" id="id_Paciente">
         @foreach($dat as $paciente)
-            <option value="{{ $paciente->id }}">{{ $paciente->nombre }}</option>
+            <option value="{{ $paciente->id }}" {{ isset($expediente) && $expediente->id_Paciente == $paciente->id ? 'selected' : '' }}>
+                {{ $paciente->nombre }}
+            </option>
         @endforeach
     </select>
+</div>
+<br>
 
-    <br>
+<div class="form-group">
     <label for="Antecedentes" class="form-label">Antecedentes:</label>
-    <input
-        type="text"
-        class="form-control"
-        name="antecedentes"
-        id="antecedentes"
-        placeholder=""
-        value="{{ isset($expedientes->antecedentes)?$expedientes->antecedentes:'' }}"
-    />
-    <br>
+    <textarea class="form-control" name="antecedentes" id="antecedentes" rows="3">{{ isset($expediente) ? $expediente->antecedentes : '' }}</textarea>
+</div>
+<br>
+
+<div class="form-group">
     <label for="Alergias" class="form-label">Alergías:</label>
-    <input
-        type="text"
-        class="form-control"
-        name="alergias"
-        id="alergias"
-        placeholder=""
-        value="{{ isset($expedientes->alergias)?$paciente->alergias:'' }}"
-    />
-    <BR>
-    <label for="medicamentos" class="form-label">Medicamentos:</label>
-    <input
-        type="text"
-        class="form-control"
-        name="medicamento"
-        id="medicamento"
-        placeholder=""
-        value="{{ isset($expedientes->medicamento)?$expedientes->medicamento:'' }}"
+    <textarea class="form-control" name="alergias" id="alergias" rows="3">{{ isset($expediente) ? $expediente->alergias : '' }}</textarea>
+</div>
+<br>
 
-    /> <br>
+<div class="form-group">
+    <label for="Medicamentos" class="form-label">Medicamentos:</label>
+    <textarea class="form-control" name="medicamento" id="medicamento" rows="3">{{ isset($expediente) ? $expediente->medicamento : '' }}</textarea>
+</div>
+<br>
 
-    <label for="histo" class="form-label">Historial Quirurjico</label>
-    <input
-        type="text"
-        class="form-control"
-        name="histquirurgico"
-        id="histquirurgico"
-        placeholder=""
-        value="{{ isset($expedientes->histquirurgico)?$expedientes->histquirurgico:'' }}"
-    /> <br>
+<div class="form-group">
+    <label for="Historial Quirúrgico" class="form-label">Historial Quirúrgico:</label>
+    <textarea type="text" class="form-control" name="histquirurgico" id="histquirurgico" value="{{ isset($expediente) ? $expediente->histquirurgico : '' }}"></textarea>
+</div>
+<br>
 
-    <input
-        class="btn btn-info"
-        type="submit"
-        value="Guardar Datos"
-    />
-
-    <a href="{{url('/expedientes') }}" class="btn btn-warning">Regresar</a> <br>
+<button type="submit" class="btn btn-primary">Guardar</button>
+<a href="{{ url('/expedientes') }}" class="btn btn-secondary">Cancelar</a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expediente;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
+
 class ExpedienteController extends Controller
 {
     /**
@@ -14,8 +15,8 @@ class ExpedienteController extends Controller
      */
     public function index()
     {
-        $daatos['expedientes'] = Expediente::with('paciente')->paginate(5);
-        return view('expedientes.index', $daatos);
+        $datos['expedientes'] = Expediente::with('paciente')->paginate(5);
+        return view('expedientes.index', $datos);
     }
 
     /**
@@ -40,11 +41,6 @@ class ExpedienteController extends Controller
         $datosExpediente = $request->except('_token');
         Expediente::insert($datosExpediente);
         return redirect('expedientes');
-        //return response()->json($datosExpediente);
-
-        //return redirect('expedientes')->with('mensaje', 'Empleado agregado con exito');
-
-        return redirect('expedientes');
     }
 
     /**
@@ -61,42 +57,39 @@ class ExpedienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Expediente  $Expediente
+     * @param  int  $idExp
      * @return \Illuminate\Http\Response
      */
     public function edit($idExp)
     {
-        //
-        $Expediente=Expediente::findOrFail($idExp);
-        return view ('expedientes.edit', compact('Expediente'));
+        $expediente = Expediente::with('paciente')->findOrFail($idExp);
+        $dat = Paciente::all(); // Asegúrate de que esta línea esté aquí
+        return view('expedientes.edit', compact('expediente', 'dat'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Expediente  $Expediente
+     * @param  int  $idExp
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $idExp)
     {
-        //
-        $datosExpediente = request()->except('_token', '_method');
-        Expediente::where('idExp', '=', $idExp)->update($datosExpediente);
+        $expediente = Expediente::findOrFail($idExp);
+        $expediente->update($request->all());
 
-        $Expediente=Expediente::findOrFail($idExp);
-        return view ('expedientes.edit', compact('Expediente'));
+        return redirect('/expedientes')->with('mensaje', 'Expediente actualizado con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Expediente  $Expediente
+     * @param  int  $idExp
      * @return \Illuminate\Http\Response
      */
     public function destroy($idExp)
     {
-        //
         Expediente::destroy($idExp);
         return redirect('/expedientes');
     }
