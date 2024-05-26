@@ -44,8 +44,6 @@
                 </form>
                 <br>
                 <br>
-                <a style='font-size: 11px;' href="{{ url('/expediente') }}" class="btn btn-success">Expediente</a> <!-- New Button -->
-
             </td>
         </tr>
         @endforeach

@@ -42,7 +42,7 @@ $controller_path = 'App\Http\Controllers';
     //Route::get('pacientes/create', [PacienteController::class,'create']);
 
     Route::resource('pacientes', PacienteController::class);
-    Route::resource('expediente', ExpedienteController::class);
+    Route::resource('expedientes', ExpedienteController::class);
     Route::resource('events', EventController::class);
     Route::resource('Recetas', RecetasController::class);
     

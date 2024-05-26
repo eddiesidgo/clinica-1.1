@@ -19,10 +19,10 @@
       "slug": "events"
     },
     {
-      "url": "/",
+      "url": "/expedientes",
       "name": "Expedientes",
       "icon": "menu-icon tf-icons bx bxs-book-content",
-      "slug": ""
+      "slug": "Expedientes"
     },
     { 
       "url": "/Recetas",
