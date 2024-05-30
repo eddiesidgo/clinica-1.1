@@ -11,7 +11,7 @@
     </div>
 @endif
 
-<a href="{{ url('/expedientes/create') }}" class="btn btn-primary">Nuevo Expediente</a>
+<a href="{{ url('/expedientes/create') }}" class="btn btn-primary">Crear Expediente</a>
 <br><br>
 <table class="table">
     <thead>

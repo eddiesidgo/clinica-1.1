@@ -19,14 +19,14 @@
         value="{{ isset($Recetas->correo_electronico)?$Recetas->correo_electronico:''}}"
     />
 <br>
-    <label for="Direccion" class="form-label">Receta médica</label>
-    <input
-        type="text"
+    <label for="Receta" class="form-label">Receta médica</label>
+    <textarea
         class="form-control"
         name="Receta"
         id="Receta"
         placeholder=""
-        value="{{ isset($Recetas->Receta)?$Recetas->Receta:''}}"/>
+        rows="5">{{ isset($Recetas->Receta)?$Recetas->Receta:'' }}</textarea>
+
 <br>
  <input
         class="btn btn-info"
