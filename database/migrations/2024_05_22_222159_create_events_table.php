@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_Paciente');
             $table->string('event');
             $table->datetime('start_date');
             $table->datetime('end_date');
             $table->timestamps();
+
+
+            $table->foreign('id_Paciente')->references('id')->on('pacientes')->onDelete('cascade');
         });
     }
 

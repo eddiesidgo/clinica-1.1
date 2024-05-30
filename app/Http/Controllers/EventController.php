@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Models\Paciente;
 
 class EventController extends Controller
 {
@@ -15,13 +16,14 @@ class EventController extends Controller
     public function index()
     {
         //
-        $all_events = Event::all();
+        $all_events = Event::with('paciente')->get();
 
         $events = [];
 
         foreach ($all_events as $event) {
             $events[] = [
-                'title' => $event->event,
+                'id_Paciente' => $event->id_Paciente,
+                'title' => $event->paciente->nombre,
                 'start' => $event->start_date,
                 'end' => $event->end_date,
             ];
@@ -39,7 +41,9 @@ class EventController extends Controller
     public function create()
     {
         //
-        return view('events.create');
+        $dat = Paciente::all();
+        return view('events.create', compact('dat'));
+        
     }
 
     /**

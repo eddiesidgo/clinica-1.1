@@ -2,12 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Paciente;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['event', 'start_date', 'end_date'];
+    protected $fillable = ['id_Paciente','event', 'start_date', 'end_date'];
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class, 'id_Paciente');//esto para que sea la relacion uno a uno
+    }
 }

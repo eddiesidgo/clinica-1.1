@@ -8,6 +8,22 @@
 
 <form action="{{ url('/events') }}" method="POST" class="mb-3">
     @csrf
+
+    <!-- Aqui el select llama el nombre del paciente -->
+    <div class="form-group">
+        <label for="Paciente" class="form-label">Seleccione el Paciente:</label>
+        <select class="form-control" name="id_Paciente" id="id_Paciente">
+            
+            @foreach($dat as $paciente)
+            <option value="{{ $paciente->id }}" {{ isset($events) && $events->id_Paciente == $paciente->id ? 'selected' : '' }}>
+                {{ $paciente->nombre }}
+            </option>
+        @endforeach
+            
+        </select>
+    </div>
+   
+
         <label for="Asunto" class="form-label">Asunto</label>
         <input
             type="text"
