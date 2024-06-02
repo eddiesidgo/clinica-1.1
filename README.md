@@ -5,6 +5,8 @@ Comandos uriilizados para el repositario y ejecución de Clinica-1.1
 # yarn 
 # yarn dev 
 # composer require spatie/laravel-permission
+#php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+# composer require barryvdh/laravel-dompdf
 # php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 # php artisan migrate:fresh --seed
 # php artisan migrate
