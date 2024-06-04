@@ -41,7 +41,9 @@ $controller_path = 'App\Http\Controllers';
     // });
 
     //Route::get('pacientes/create', [PacienteController::class,'create']);
-    Route::post('/consultas/{idConsulta}/update-estado', [ConsultaController::class, 'updateEstado'])->name('consultas.update-estado');
+    Route::post('/consultas/{id}/update-estado', [ConsultaController::class, 'updateEstado']);
+    Route::post('/consultas/{consulta}/update-estado', 'ConsultaController@updateEstado')->name('consultas.updateEstado');
+
     Route::resource('consultas', ConsultaController::class);
     Route::resource('pacientes', PacienteController::class);
     Route::resource('events', EventController::class);

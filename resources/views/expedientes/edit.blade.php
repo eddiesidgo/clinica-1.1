@@ -1,6 +1,6 @@
 @extends('layouts.layoutMaster')
 
-@section('title', 'Editar Expediente')
+@section('title', 'Editar cONSULTA')
 
 @section('content')
 

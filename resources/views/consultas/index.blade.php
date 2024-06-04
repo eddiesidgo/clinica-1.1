@@ -47,7 +47,8 @@
 <script>
     function updateEstado(consultaId, estado) {
         $.ajax({
-            url: '{{ url('/consultas') }}/' + consultaId + '/update-estado',
+            url: '{{ route("consultas.updateEstado", ":consultaId") }}'.replace(':consultaId', consultaId),
+
             method: 'POST',
             data: {
                 _token: '{{ csrf_token() }}',
@@ -57,23 +58,20 @@
                 if (response.success) {
                     $('#estado-' + consultaId).text(estado);
                     if (estado === 'Finalizada') {
-                        $('#pendiente-' + consultaId + ', #enproceso-' + consultaId).attr('disabled', true);
-                        $('#editar-' + consultaId).attr('disabled', true);
-                        document.cookie = 'consulta_' + consultaId + '=' + estado;
+                        $('#pendiente-' + consultaId + ', #enproceso-' + consultaId + ', #editar-' + consultaId).attr('disabled', true);
+                        document.cookie = 'consulta_' + consultaId + '=' + estado + '; path=/';
                     }
                 }
             }
         });
     }
 
-    // Restaurar el estado de los botones desde las cookies al cargar la página
     $(document).ready(function() {
         $('[id^="pendiente-"], [id^="enproceso-"], [id^="finalizada-"]').each(function() {
             var consultaId = this.id.split('-')[1];
             var estado = getCookie('consulta_' + consultaId);
             if (estado === 'Finalizada') {
-                $('#pendiente-' + consultaId + ', #enproceso-' + consultaId).attr('disabled', true);
-                $('#editar-' + consultaId).attr('disabled', true);
+                $('#pendiente-' + consultaId + ', #enproceso-' + consultaId + ', #editar-' + consultaId).attr('disabled', true);
             }
         });
     });

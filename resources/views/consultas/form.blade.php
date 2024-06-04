@@ -1,6 +1,3 @@
-<?php
-?>
-<!-- Aqui el select llama la fecha de la consulta -->
 <div class="form-group">
     <label for="Consulta" class="form-label">Seleccione la Fecha de la Consulta:</label>
     <select class="form-control" name="id_Cita" id="id_Cita">
@@ -21,7 +18,9 @@
 
 <div class="form-group">
     <label for="Estado" class="form-label">Estado:</label>
-    <input type="text" class="form-control" name="estado" id="estado" value="{{ isset($consulta) ? $consulta->estado : '' }}">
+    <span class="form-control" id="estado" readonly>Pendiente</span>
+    <!-- Campo oculto para almacenar el estado -->
+    <input type="hidden" name="estado" value="Pendiente">
 </div>
 <br>
 
