@@ -16,10 +16,13 @@
       const calendarEl = document.getElementById('calendar');
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'timeGridWeek',
-        //slotMinTime: '06:00',
+        
         events: @json($events)
       });
+      
       calendar.render();
+
+     
     });
 
   </script>

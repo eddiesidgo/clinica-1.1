@@ -22,10 +22,10 @@ class EventController extends Controller
 
         foreach ($all_events as $event) {
             $events[] = [
-                'id_Paciente' => $event->id_Paciente,
                 'title' => $event->paciente->nombre,
                 'start' => $event->start_date,
                 'end' => $event->end_date,
+                'url' => '/events/show'.$event->id
             ];
         }
 
@@ -73,6 +73,9 @@ class EventController extends Controller
     public function show($id)
     {
         //
+        //$datos=Event::where('id', '=', $id)->get();
+        $datos=Event::all();
+        return view ('events.show', compact('datos'));
     }
 
     /**
