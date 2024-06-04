@@ -4,7 +4,7 @@
     "creatorName" => "LawLogic Innovations S.A. de C.V.",
     "creatorUrl" => "https://github.com/eddiesidgo/clinica-1.1",
     "templateName" => "MediSphere",
-    "templateSuffix" => "Clinic",
+    "templateSuffix" => "MediSphere",
     "templateVersion" => "1.0.0",
     "templateFree" => true,
     "templateDescription" => "Start your development with a Dashboard for Bootstrap 5",
