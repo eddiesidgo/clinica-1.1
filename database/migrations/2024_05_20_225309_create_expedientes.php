@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('expedientes', function (Blueprint $table) {
-            $table->id('idExp')->unique();
-            $table->unsignedBigInteger('id_Paciente'); 
-            $table->foreign('id_Paciente')->references('id')->on('pacientes')->onDelete('cascade');
-            $table->string('DUI')->nullable();
-            $table->foreign('DUI')->references('DUI')->on('pacientes')->onDelete('cascade');
+            $table->id('idExp'); // Automatically creates an auto-incrementing primary key
+            $table->unsignedBigInteger('id_Paciente'); // Foreign key column
             $table->text('antecedentes')->nullable();
             $table->text('alergias')->nullable();
             $table->text('medicamento')->nullable();
             $table->text('histquirurgico')->nullable();
             $table->timestamps();
+
+            // Define the foreign key constraint
+            $table->foreign('id_Paciente')->references('id')->on('pacientes')->onDelete('cascade');
         });
     }
 
