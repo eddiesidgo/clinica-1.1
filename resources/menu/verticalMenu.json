@@ -27,7 +27,7 @@
     {
       "url": "/consultas",
       "name": "Consultas",
-      "icon": "menu-icon tf-icons bx bxs-book-content",
+      "icon": "menu-icon tf-icons bx bxs-calendar-check",
       "slug": "Consultas"
     },
     { 

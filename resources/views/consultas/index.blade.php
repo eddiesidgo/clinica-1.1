@@ -33,10 +33,12 @@
                     <span id="estado-{{ $consulta->idConsulta }}">{{ $consulta->estado }}</span>
                 </td>
                 <td>
-                    <a style='font-size: 11px;' href="{{ url('/consultas/'.$consulta->idConsulta.'/edit') }}" class="btn btn-info" id="editar-{{ $consulta->idConsulta }}">Editar</a>
-                    <button style="font-size: 11px;" class="btn btn-primary" onclick="updateEstado('{{ $consulta->idConsulta }}', 'Pendiente')" id="pendiente-{{ $consulta->idConsulta }}">Pendiente</button>
-                    <button style="font-size: 11px;" class="btn btn-warning" onclick="updateEstado('{{ $consulta->idConsulta }}', 'En Proceso')" id="enproceso-{{ $consulta->idConsulta }}">En Proceso</button>
-                    <button style="font-size: 11px;" class="btn btn-success" onclick="updateEstado('{{ $consulta->idConsulta }}', 'Finalizada')" id="finalizada-{{ $consulta->idConsulta }}">Finalizada</button>
+                    <div class="btn-group" role="group">
+                        <a style='font-size: 11px;' href="{{ url('/consultas/'.$consulta->idConsulta.'/edit') }}" class="btn btn-info" id="editar-{{ $consulta->idConsulta }}">Editar</a>
+                        <button style="font-size: 11px;" class="btn btn-primary" onclick="updateEstado('{{ $consulta->idConsulta }}', 'Pendiente')" id="pendiente-{{ $consulta->idConsulta }}">Pendiente</button>
+                        <button style="font-size: 11px;" class="btn btn-warning" onclick="updateEstado('{{ $consulta->idConsulta }}', 'En Proceso')" id="enproceso-{{ $consulta->idConsulta }}">En Proceso</button>
+                        <button style="font-size: 11px;" class="btn btn-success" onclick="updateEstado('{{ $consulta->idConsulta }}', 'Finalizada')" id="finalizada-{{ $consulta->idConsulta }}-extra">Finalizada</button>
+                    </div>
                 </td>
             </tr>
         @endforeach
@@ -48,7 +50,6 @@
     function updateEstado(consultaId, estado) {
         $.ajax({
             url: '{{ route("consultas.updateEstado", ":consultaId") }}'.replace(':consultaId', consultaId),
-
             method: 'POST',
             data: {
                 _token: '{{ csrf_token() }}',

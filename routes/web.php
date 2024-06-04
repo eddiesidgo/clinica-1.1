@@ -35,7 +35,6 @@ Route::middleware([
 $controller_path = 'App\Http\Controllers';
 
     Route::get('/', $controller_path . '\pages\HomePage@index')->name('pages-home');
-<<<<<<< HEAD
     Route::get('/page-2', $controller_path . '\pages\Page2@index')->name('pages-page-2');
 
     // ieRoute::get('/pacntes', function () {
@@ -48,10 +47,9 @@ $controller_path = 'App\Http\Controllers';
 
     Route::resource('consultas', ConsultaController::class);
     Route::resource('pacientes', PacienteController::class);
-=======
     Route::resource('recetas', RecetasController::class);
     Route::get('/recetas/{id}/pdf', [GeneradordePDFController::class, 'generarPDF'])->name('recetas.pdf');
->>>>>>> 567d657371dd969060dcfd525dcb413d94c5366f
+
     Route::resource('events', EventController::class);
     Route::resource('pacientes', PacienteController::class);
     Route::resource('expedientes', ExpedienteController::class);
