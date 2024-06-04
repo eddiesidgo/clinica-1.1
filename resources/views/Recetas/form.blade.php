@@ -1,35 +1,40 @@
-<br>
-<label for="Nombre" class="form-label">Nombre de paciente</label>
-<br>
-    <input
-        type="text"
-        class="form-control"
-        name="Paciente"
-        id="Paciente"
-        placeholder=""
-        value="{{ isset($Recetas->Paciente)?$Recetas->Paciente:'' }}"/>
-<br>
-    <label for="Genero" class="form-label">Correo electrónico</label>
-    <input
-        type="text"
-        class="form-control"
-        name="Correo"
-        id="Correo"
-        placeholder=""
-        value="{{ isset($Recetas->correo_electronico)?$Recetas->correo_electronico:''}}"
-    />
-<br>
-    <label for="Receta" class="form-label">Receta médica</label>
-    <textarea
-        class="form-control"
-        name="Receta"
-        id="Receta"
-        placeholder=""
-        rows="5">{{ isset($Recetas->Receta)?$Recetas->Receta:'' }}</textarea>
-
-<br>
- <input
-        class="btn btn-info"
-        type="submit"
-        value="Guardar Datos"
-    />
+<form method="POST" action="{{ route('recetas.store') }}">
+    @csrf
+    <div class="mb-3">
+        <label for="DUI" class="form-label">Documento Único de Identidad:</label>
+        <select class="form-control" name="DUI" id="DUI">
+            @foreach($dat as $paciente)
+                <option value="{{ $paciente->DUI }}" {{ old('DUI') == $paciente->DUI ? 'selected' : '' }}>
+                    {{ $paciente->DUI }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="Paciente" class="form-label">Paciente:</label>
+        <select class="form-control" name="Paciente" id="Paciente">
+            @foreach($dat as $paciente)
+                <option value="{{ $paciente->id }}" {{ old('Paciente') == $paciente->id ? 'selected' : '' }}>
+                    {{ $paciente->nombre }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="Correo" class="form-label">Correo electrónico:</label>
+        <select class="form-control" name="Correo" id="Correo">
+            @foreach($dat as $paciente)
+                <option value="{{ $paciente->correo_electronico }}" {{ old('Correo') == $paciente->correo_electronico ? 'selected' : '' }}>
+                    {{ $paciente->correo_electronico }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="Receta" class="form-label">Receta médica:</label>
+        <textarea class="form-control" name="Receta" id="Receta">{{ old('Receta') }}</textarea>
+    </div>
+    <div class="mb-3">
+        <input class="btn btn-info" type="submit" value="Guardar Datos"/>
+    </div>
+</form>

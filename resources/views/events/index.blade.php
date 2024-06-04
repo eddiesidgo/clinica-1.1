@@ -3,9 +3,9 @@
 @section('title', 'Citas')
 
 @section('content')
-
-<a href="{{url('/events/create') }}" class="btn btn-primary">+ Nueva Cita</a> <br> <br>
-
+<div class="mb-3">
+<a href="{{url('/events/create') }}" class="btn btn-info">+ Nueva Cita</a> 
+</div>
 <div class="container-fluid" id='calendar'></div>
 
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.13/index.global.min.js"></script>
