@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsultaController;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
@@ -40,13 +41,12 @@ $controller_path = 'App\Http\Controllers';
     // });
 
     //Route::get('pacientes/create', [PacienteController::class,'create']);
-    /* Route::get('expedientes', function(){
-        return view('expedientes.index');
-    }); */
-
+    Route::post('/consultas/{idConsulta}/update-estado', [ConsultaController::class, 'updateEstado'])->name('consultas.update-estado');
+    Route::resource('consultas', ConsultaController::class);
     Route::resource('pacientes', PacienteController::class);
     Route::resource('events', EventController::class);
     Route::resource('expedientes', ExpedienteController::class);
     Route::resource('Recetas', RecetasController::class);
+    // Route::resource('consultas', ConsultaController::class);
     
 });

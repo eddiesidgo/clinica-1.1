@@ -16,4 +16,8 @@ class Event extends Model
     {
         return $this->belongsTo(Paciente::class, 'id_Paciente');//esto para que sea la relacion uno a uno
     }
+    public function consultas()
+    {
+        return $this->hasMany(Consulta::class, 'id_Cita');
+    }
 }

@@ -24,6 +24,12 @@
       "icon": "menu-icon tf-icons bx bxs-book-content",
       "slug": "Expedientes"
     },
+    {
+      "url": "/consultas",
+      "name": "Consultas",
+      "icon": "menu-icon tf-icons bx bxs-book-content",
+      "slug": "Consultas"
+    },
     { 
       "url": "/Recetas",
       "name": "Recetas médicas",
