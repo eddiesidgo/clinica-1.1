@@ -17,7 +17,7 @@
     <br>
 
     <div class="form-group">
-        <label for="Diagnostico" class="form-label">Diagnóstico:</label>
+        <label for="Diagnostico" class="form-label">Diagnóstico de la consulta:</label>
         <textarea class="form-control" name="diagnostico" id="diagnostico" rows="3">{{ isset($consulta) ? $consulta->diagnostico : '' }}</textarea>
     </div>
     <br>
