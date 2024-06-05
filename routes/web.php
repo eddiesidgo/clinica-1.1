@@ -3,9 +3,11 @@
 use App\Http\Controllers\ConsultaController;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ExpedienteController;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use App\Http\Controllers\GeneradordePDFController;
 use App\Http\Controllers\RecetasController;
 
@@ -41,8 +43,9 @@ Route::middleware([
     //     return view('pacientes.index');
     // });
 
-    //Route::get('pacientes/create', [PacienteController::class,'create']);
     
+    Route::get('consultas/pdf', [ConsultaController::class, 'pdf'])->name('consultas.pdf');
+
     Route::resource('pacientes', PacienteController::class);
     Route::resource('recetas', RecetasController::class);
     Route::get('/recetas/{id}/pdf', [GeneradordePDFController::class, 'generarPDF'])->name('recetas.pdf');
@@ -52,4 +55,8 @@ Route::middleware([
     Route::resource('expedientes', ExpedienteController::class);
     Route::resource('Recetas', RecetasController::class);
     Route::resource('consultas', ConsultaController::class);
+    
+
+
+
 });

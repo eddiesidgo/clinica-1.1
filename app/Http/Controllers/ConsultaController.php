@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Consulta;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ConsultaController extends Controller
 {
@@ -12,6 +13,14 @@ class ConsultaController extends Controller
     {
         $consultas = Consulta::all();
         return view('consultas.index', compact('consultas'));
+    }
+
+    //Metodo para el pdf de consulta 
+
+    public function pdf(){
+        $consultas=Consulta::all();
+        $pdf = Pdf::loadView('consultas.pdf', compact('consultas'));
+        return $pdf->stream();
     }
 
     public function create()
@@ -59,4 +68,7 @@ class ConsultaController extends Controller
         Consulta::destroy($id);
         return redirect('/consultas')->with('mensaje', 'Consulta eliminada con éxito');
     }
+
+
+
 }

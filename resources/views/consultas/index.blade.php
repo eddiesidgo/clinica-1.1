@@ -12,6 +12,7 @@
 @endif
 
 <a href="{{ url('/consultas/create') }}" class="btn btn-primary">Crear Consulta</a>
+<a href="{{route('consultas.pdf')}}" class="btn btn-success">Reporte Consultas</a>
 <br><br>
 <table class="table">
     <thead>
