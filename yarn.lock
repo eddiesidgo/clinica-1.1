@@ -2852,6 +2852,14 @@ datatables.net-buttons@~1.7.1:
     datatables.net "^1.10.15"
     jquery ">=1.7"
 
+datatables.net-dt@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.npmjs.org/datatables.net-dt/-/datatables.net-dt-2.0.8.tgz"
+  integrity sha512-9SG5MWJXq2IQSJWuH+2DvK/9AXduZr0wI/lQbrtBBd18Ck5sO8z3EXxy5wYxxjTFZ9Z+wl0lHsO//qR8QYmWIA==
+  dependencies:
+    datatables.net "2.0.8"
+    jquery ">=1.7"
+
 datatables.net-fixedcolumns-bs5@~3.3.3:
   version "3.3.3"
   resolved "https://registry.npmjs.org/datatables.net-fixedcolumns-bs5/-/datatables.net-fixedcolumns-bs5-3.3.3.tgz"
@@ -2942,6 +2950,13 @@ datatables.net@>=1.11.3:
   version "1.12.1"
   resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-1.12.1.tgz"
   integrity sha512-e6XAMUoV41JdQPS/r9YRfRcmTPcCVvyZbWI+xog1Zg+kjVliMQbEkvWK5XFItmi64Cvwg+IqsZbTUJ1KSY3umA==
+  dependencies:
+    jquery ">=1.7"
+
+datatables.net@2.0.8:
+  version "2.0.8"
+  resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-2.0.8.tgz"
+  integrity sha512-4/2dYx4vl975zQqZbyoVEm0huPe61qffjBRby7K7V+y9E+ORq4R8KavkgrNMmIgO6cl85Pg4AvCbVjvPCIT1Yg==
   dependencies:
     jquery ">=1.7"
 
