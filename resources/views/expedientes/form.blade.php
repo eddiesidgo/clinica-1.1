@@ -2,17 +2,17 @@
 <?php
 ?>
 <!-- Aqui el select llama el nombre del paciente -->
-<div class="form-group">
-    <label for="Paciente" class="form-label">Seleccione el Paciente:</label>
-    <select class="form-control" name="id_Paciente" id="id_Paciente">
+<div class="mb-3">
+    <label for="id_Paciente" class="form-label">Seleccione el Paciente:</label>
+    <input class="form-control" name="nombre_Paciente" id="nombre_Paciente" list="pacientesList" placeholder="Seleccione o escriba el nombre del paciente" 
+        value="{{ isset($expediente) ? $expediente->paciente->nombre : '' }}">
+    <datalist id="pacientesList">
         @foreach($dat as $paciente)
-            <option value="{{ $paciente->id }}" {{ isset($expediente) && $expediente->id_Paciente == $paciente->id ? 'selected' : '' }}>
-                {{ $paciente->nombre }}
-            </option>
+            <option value="{{ $paciente->nombre }}"></option>
         @endforeach
-    </select>
+    </datalist>
 </div>
-<br>
+    <br>
 
 <div class="form-group">
     <label for="Antecedentes" class="form-label">Antecedentes:</label>

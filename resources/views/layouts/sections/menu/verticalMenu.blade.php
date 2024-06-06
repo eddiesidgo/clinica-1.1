@@ -1,3 +1,4 @@
+@role('secre')
 @php
 $configData = Helper::appClasses();
 @endphp
@@ -85,3 +86,4 @@ $configData = Helper::appClasses();
     @endif
     @endforeach
 </aside>
+@endrole

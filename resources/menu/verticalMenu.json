@@ -12,18 +12,21 @@
       "icon": "menu-icon tf-icons bx bxs-contact",
       "slug": "pacientes"
     },
+    
     {  
       "url": "/events",
       "name": "Citas médicas",
       "icon": "menu-icon tf-icons bx bxs-notepad",
       "slug": "events"
     },
+    
     {
       "url": "/expedientes",
       "name": "Expedientes",
       "icon": "menu-icon tf-icons bx bxs-book-content",
       "slug": "Expedientes"
     },
+    
     { 
       "url": "/Recetas",
       "name": "Recetas médicas",

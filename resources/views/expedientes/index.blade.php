@@ -3,6 +3,10 @@
 @section('title', 'Expedientes')
 
 @section('content')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+
 <h4>Gestionar Expedientes</h4>
 
 @if (Session::has('mensaje'))
@@ -13,7 +17,7 @@
 
 <a href="{{ url('/expedientes/create') }}" class="btn btn-primary">Crear Expediente</a>
 <br><br>
-<table class="table">
+<table class="table" id="table">
     <thead>
         <tr>
             <th>#</th>
@@ -52,7 +56,12 @@
 </table>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
+    $(document).ready(function() {
+    let table = new DataTable('#table');
+    $('#table').DataTable();
+});
     function confirmDelete(expedienteId) {
         Swal.fire({
             title: '¿Deseas borrar?',
@@ -73,4 +82,5 @@
         });
     }
 </script>
+
 @endsection

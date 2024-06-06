@@ -42,8 +42,8 @@
                         <h5 class="text-primary">Panel de Doctor</h5>
                         <p>Acceda a las historias clínicas de sus pacientes, gestione consultas y tratamientos.</p>
                         <ul class="list-group">
-                            <li class="list-group-item"><a href="{{ route('pacientes.index') }}">Mis Pacientes</a></li>
-                            <li class="list-group-item"><a href="{{ route('consultas.index') }}">Consultas</a></li>
+                            <li class="list-group-item"><a href="{{ route('events.index') }}">Citas</a></li>
+                            
                         </ul>
                     </div>
                     @endrole
