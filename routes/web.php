@@ -9,6 +9,7 @@ use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ExpedienteController;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use App\Http\Controllers\GeneradordePDFController;
+use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\RecetasController;
 
 /*
@@ -45,6 +46,8 @@ Route::middleware([
 
     
     Route::get('consultas/pdf', [ConsultaController::class, 'pdf'])->name('consultas.pdf');
+    // routes/web.php
+
 
     Route::resource('pacientes', PacienteController::class);
     Route::resource('recetas', RecetasController::class);
@@ -55,8 +58,8 @@ Route::middleware([
     Route::resource('expedientes', ExpedienteController::class);
     Route::resource('Recetas', RecetasController::class);
     Route::resource('consultas', ConsultaController::class);
-    
-
+    Route::get('/historial/PDF_nombre', [HistorialController::class, 'GenerarPDFNombre'])->name('consultas.pdfNombre');
+    Route::resource('historial', HistorialController::class);
 
 
 });

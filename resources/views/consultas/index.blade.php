@@ -13,6 +13,8 @@
 
 <a href="{{ url('/consultas/create') }}" class="btn btn-primary">Crear Consulta</a>
 <a href="{{route('consultas.pdf')}}" class="btn btn-success">Reporte Consultas</a>
+<a href="{{ route('historial.index') }}" class="btn btn-success">Reporte Historial Consultas</a>
+
 <br><br>
 <table class="table">
     <thead>

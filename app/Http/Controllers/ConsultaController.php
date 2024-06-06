@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Consulta;
 use App\Models\Event;
+use App\Models\HistorialConsulta;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -23,11 +24,21 @@ class ConsultaController extends Controller
         return $pdf->stream();
     }
 
+    public function consultar(){
+        return view('consultas.consultar');
+    }
     public function create()
     {
         $dat = Event::all();
         return view('consultas.create', compact('dat'));
     }
+
+    public function show($idConsulta)
+{
+    $consulta = HistorialConsulta::findOrFail($idConsulta);
+    return view('consultas.show', compact('consulta'));
+}
+
 
     public function store(Request $request)
     {
@@ -36,7 +47,7 @@ class ConsultaController extends Controller
             'diagnostico' => 'required|string|max:255',
             'estado' => 'required|string|max:50',
         ]);
-
+//Hola
         Consulta::create($validatedData);
 
         return redirect('consultas')->with('mensaje', 'Consulta creada con éxito.');
