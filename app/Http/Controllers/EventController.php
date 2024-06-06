@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use Illuminate\Http\Request;
 use App\Models\Paciente;
+use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EventController extends Controller
 {
@@ -25,12 +26,18 @@ class EventController extends Controller
                 'title' => $event->paciente->nombre,
                 'start' => $event->start_date,
                 'end' => $event->end_date,
-                'url' => '/events/show'.$event->id
+                'url' => '/events/show'
             ];
         }
 
         return view('events.index', compact('events'));
 
+    }
+
+    public function pdf(){
+        $citas=Event::all();
+        $pdf = Pdf::loadView('events.pdf', compact('citas'));
+        return $pdf->stream();
     }
 
     /**
@@ -110,5 +117,8 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+
+        Event::destroy($id);
+        return redirect('/events');
     }
 }

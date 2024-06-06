@@ -4,7 +4,11 @@
 
 @section('content')
 
-<a href="{{url('/events/create') }}" class="btn btn-primary">+ Nueva Cita</a> <br> <br>
+<a href="{{url('/events/create') }}" class="btn btn-primary">+ Nueva Cita</a> 
+<a href="{{url('/events/show') }}" class="btn btn-warning">Lista de citas</a>
+<a href="{{route('events.pdf')}}" class="btn btn-info">Reporte de Citas</a>
+
+<br> <br>
 
 <div class="container-fluid" id='calendar'></div>
 

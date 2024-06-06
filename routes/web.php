@@ -46,9 +46,12 @@ Route::middleware([
     
     Route::get('consultas/pdf', [ConsultaController::class, 'pdf'])->name('consultas.pdf');
 
+    Route::get('events/pdf', [EventController::class, 'pdf'])->name('events.pdf');
+
+
     Route::resource('pacientes', PacienteController::class);
     Route::resource('recetas', RecetasController::class);
-    Route::get('/recetas/{id}/pdf', [GeneradordePDFController::class, 'generarPDF'])->name('recetas.pdf');
+    // Route::get('/recetas/{id}/pdf', [GeneradordePDFController::class, 'generarPDF'])->name('recetas.pdf');
 
     Route::resource('events', EventController::class);
     Route::resource('pacientes', PacienteController::class);
