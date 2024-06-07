@@ -61,8 +61,8 @@ Route::middleware([
     Route::resource('expedientes', ExpedienteController::class);
     Route::resource('Recetas', RecetasController::class);
     Route::resource('consultas', ConsultaController::class);
-    Route::get('/historial/PDF_nombre', [HistorialController::class, 'GenerarPDFNombre'])->name('consultas.pdfNombre');
-    Route::resource('historial', HistorialController::class);
+
+
 
 
 });
