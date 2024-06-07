@@ -24,6 +24,7 @@ class Consulta extends Model
         return $this->belongsTo(Event::class, 'id_Cita', 'id');
     }
 
+
     // Mutator para establecer el campo 'updated_at' automáticamente al crear un nuevo registro
     public function setUpdatedAtAttribute($value)
     {

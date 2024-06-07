@@ -43,6 +43,9 @@
             <td>
                 <div class="btn-group" role="group">
                 <a href="{{ route('consultas.edit', ['consulta' => $consulta->idConsulta]) }}" class="btn btn-info" id="editar-{{ $consulta->idConsulta }}">Editar</a>
+                @role('doctor')
+                <a href="{{ route('recetas.index') }}" class="btn btn-success">Receta</a>
+                @endrole
                 </div>
             </td>
         </tr>

@@ -38,18 +38,6 @@
       "name": "Consultas",
       "icon": "menu-icon tf-icons bx bxs-calendar-check",
       "slug": "Consultas"
-    },
-    { 
-      "url": "/Usuarios",
-      "name": "Usuarios",
-      "icon": "menu-icon tf-icons bx bxs-user-plus",
-      "slug": "Usuarios"
-    },
-    {  
-      "url": "/roles",
-      "name": "Roles de usuario",
-      "icon": "menu-icon tf-icons bx bxs-group",
-      "slug": "roles"
     }
   ]
 }

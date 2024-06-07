@@ -15,7 +15,14 @@
     </div>
 @endif
 
+@role('secre')
 <a href="{{ url('/expedientes/create') }}" class="btn btn-primary">Crear Expediente</a>
+@endrole
+
+@role('doctor')
+<a href="{{ route('consultas.index') }}" class="btn btn-primary">Consultas</a>
+@endrole
+
 <br><br>
 <table class="table" id="table">
     <thead>
@@ -40,10 +47,13 @@
                 <td>{{ $expediente->histquirurgico }}</td>
                 <td>
                     <br><br>
+                    @role('secre')
                     <a style='font-size: 11px;' href="{{ url('/expedientes/'.$expediente->idExp.'/edit') }}" class="btn btn-info">Editar</a>
                     <br>
                     <br>
                     <button style="font-size: 11px;" class="btn btn-danger" onclick="confirmDelete('{{ $expediente->idExp }}')">Borrar</button>
+                    @endrole
+                    
                     <form id="delete-form-{{ $expediente->idExp }}" action="{{ url('/expedientes/' . $expediente->idExp) }}" method="POST" style="display: none;">
                         @csrf
                         {{ method_field('DELETE') }}

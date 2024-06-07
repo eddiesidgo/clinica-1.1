@@ -4,7 +4,12 @@
 
 @section('content')
 
+@role('secre')
 <a href="{{url('/events/create') }}" class="btn btn-primary">+ Nueva Cita</a> 
+@endrole
+@role('doctor')
+<a href="{{ route('consultas.index') }}" class="btn btn-success">Consultas</a>
+@endrole
 <a href="{{url('/events/show') }}" class="btn btn-warning">Lista de citas</a>
 <a href="{{route('events.pdf')}}" class="btn btn-info">Reporte de Citas</a>
 

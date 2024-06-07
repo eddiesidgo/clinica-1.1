@@ -9,6 +9,10 @@
 
 @endif
 <a href="{{url('/Recetas/create') }}" class="btn btn-primary">Recetas</a>
+
+@role('doctor')
+<a href="{{ route('consultas.index') }}" class="btn btn-gray">Regresar</a>
+@endrole
 <br>
 <br>
 <table class="table">

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Expediente;
@@ -8,86 +7,82 @@ use App\Models\Paciente;
 
 class ExpedienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $datos['expedientes'] = Expediente::with('paciente')->paginate(5);
         return view('expedientes.index', $datos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $dat = Paciente::all();
         return view('expedientes.create', compact('dat'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $datosExpediente = $request->except('_token');
+        // Validar y obtener el ID del paciente
+        $request->validate([
+            'nombre_Paciente' => 'required|string',
+            'antecedentes' => 'nullable|string',
+            'alergias' => 'nullable|string',
+            'medicamento' => 'nullable|string',
+            'histquirurgico' => 'nullable|string',
+        ]);
+
+        $nombrePaciente = $request->input('nombre_Paciente');
+        $paciente = Paciente::where('nombre', $nombrePaciente)->first();
+
+        if (!$paciente) {
+            return back()->withErrors(['nombre_Paciente' => 'Paciente no encontrado.']);
+        }
+
+        $datosExpediente = $request->except('_token', 'nombre_Paciente');
+        $datosExpediente['id_Paciente'] = $paciente->id;
+
         Expediente::insert($datosExpediente);
         return redirect('expedientes');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Expediente  $Expediente
-     * @return \Illuminate\Http\Response
-     */
     public function show(Expediente $expedientes)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $idExp
-     * @return \Illuminate\Http\Response
-     */
     public function edit($idExp)
     {
         $expediente = Expediente::with('paciente')->findOrFail($idExp);
-        $dat = Paciente::all(); // Asegúrate de que esta línea esté aquí
+        $dat = Paciente::all();
         return view('expedientes.edit', compact('expediente', 'dat'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $idExp
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $idExp)
-    {
-        $expediente = Expediente::findOrFail($idExp);
-        $expediente->update($request->all());
+{
+    // Validar y obtener el ID del paciente
+    $request->validate([
+        'nombre_Paciente' => 'required|string',
+        'antecedentes' => 'nullable|string',
+        'alergias' => 'nullable|string',
+        'medicamento' => 'nullable|string',
+        'histquirurgico' => 'nullable|string',
+    ]);
 
-        return redirect('/expedientes')->with('mensaje', 'Expediente actualizado con éxito');
+    $nombrePaciente = $request->input('nombre_Paciente');
+    $paciente = Paciente::where('nombre', $nombrePaciente)->first();
+
+    if (!$paciente) {
+        return back()->withErrors(['nombre_Paciente' => 'Paciente no encontrado.']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $idExp
-     * @return \Illuminate\Http\Response
-     */
+    $datosExpediente = $request->except('_token', 'nombre_Paciente');
+    $datosExpediente['id_Paciente'] = $paciente->id;
+
+    $expediente = Expediente::findOrFail($idExp);
+    $expediente->update($datosExpediente);
+
+    return redirect('/expedientes')->with('mensaje', 'Expediente actualizado con éxito');
+}
+
     public function destroy($idExp)
     {
         Expediente::destroy($idExp);

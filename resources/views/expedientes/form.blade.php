@@ -3,15 +3,19 @@
 ?>
 <!-- Aqui el select llama el nombre del paciente -->
 <div class="mb-3">
-    <label for="id_Paciente" class="form-label">Seleccione el Paciente:</label>
+    <label for="nombre_Paciente" class="form-label">Seleccione el Paciente:</label>
     <input class="form-control" name="nombre_Paciente" id="nombre_Paciente" list="pacientesList" placeholder="Seleccione o escriba el nombre del paciente" 
         value="{{ isset($expediente) ? $expediente->paciente->nombre : '' }}">
     <datalist id="pacientesList">
         @foreach($dat as $paciente)
-            <option value="{{ $paciente->nombre }}"></option>
+            <option value="{{ $paciente->nombre }}" data-id="{{ $paciente->id }}"></option>
         @endforeach
     </datalist>
 </div>
+
+<!-- Campo oculto para almacenar el ID del paciente seleccionado -->
+<input type="hidden" name="id_Paciente" id="hiddenIdPaciente">
+
     <br>
 
 <div class="form-group">
@@ -40,3 +44,14 @@
 
 <button type="submit" class="btn btn-primary">Guardar</button>
 <a href="{{ url('/expedientes') }}" class="btn btn-secondary">Cancelar</a>
+
+<script>
+    document.getElementById('nombre_Paciente').addEventListener('input', function() {
+        var selectedOption = document.querySelector("#pacientesList option[value='" + this.value + "']");
+        if (selectedOption) {
+            document.getElementById('hiddenIdPaciente').value = selectedOption.getAttribute('data-id');
+        } else {
+            document.getElementById('hiddenIdPaciente').value = '';
+        }
+    });
+</script>
