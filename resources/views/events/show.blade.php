@@ -1,13 +1,12 @@
 @extends('layouts/layoutMaster')
-
 @section('title', 'Citas')
-
 @section('content')
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <table class="table">
     <thead>
         <tr>
-            <th>Nombre del Paciente</th>
+            <th>Documento Único de Identidad</th>
+            <th>Nombre</th>
             <th>Asunto</th>
             <th>Fecha de Inicio</th>
             <th>Fecha de Finalizacion</th>
@@ -17,31 +16,44 @@
     <tbody>
         @foreach ($datos as $event)    
         <tr>
-            <td scope="row">{{$event->paciente->nombre}}</td>
+            <td>{{$event->DUI}}</td>
+            <td scope="row">{{$event->nombre}}</td>
             <td>{{$event->event}}</td>
             <td>{{$event->start_date}}</td>
             <td>{{$event->end_date}}</td>
-            <td><a href="{{url('/events/edit') }}" class="btn btn-primary">Editar</a> 
-                
-                <a href="{{route('events.pdf')}}" class="btn btn-info">Comprobante</a>
+            <td>
+                <a style="font-size: 8px; margin-bottom: 1mm;" href="{{ url('/events/'.$event->id.'/ComprobantePDF') }}" class="btn btn-danger d-block" target="_blank">Comprobante</a>
+                <a style="font-size: 8px; margin-bottom: 1mm;" class="btn btn-warning d-block" onclick="ConfirmarEliminar('{{ $event->id }}')">Eliminar</a>
 
-                <button class="btn btn-danger" onclick="confirmDelete('{{ $event->id }}')">Borrar</button>
+
                 <form id="delete-form-{{ $event->id }}" action="{{ url('/events/'.$event->id) }}" method="POST" style="display: none;">
                     @csrf
                     {{ method_field('DELETE') }}
                 </form>
-
-
             </td> 
         </tr>
-
         @endforeach
-
-        
     </tbody>
 </table>
-
-<a href="{{url('/events') }}" class="btn btn-warning">Regresar</a>
-
-
+<div class="mb-3">
+<a href="{{url('/events') }}" class="btn btn-secondary">Cancelar</a>
+</div>
+<script>
+function ConfirmarEliminar(id) {
+    Swal.fire({
+        title: '¿Deseas borrar?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#198754',
+        cancelButtonColor: '#DC3545',
+        confirmButtonText: 'Sí, borrar',
+        cancelButtonText: 'Cancelar',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete-form-' + id).submit();
+        }
+    });
+}
+</script>
 @endsection

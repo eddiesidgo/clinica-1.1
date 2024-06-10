@@ -10,10 +10,17 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id','id_Paciente','event', 'start_date', 'end_date'];
-
+    protected $fillable = 
+    [
+    'id',
+    'DUI',
+    'nombre',
+    'event', 
+    'start_date', 
+    'end_date'
+    ];
     public function paciente()
     {
-        return $this->belongsTo(Paciente::class, 'id_Paciente');//esto para que sea la relacion uno a uno
+        return $this->belongsTo(Paciente::class, 'DUI');//esto para que sea la relacion uno a uno
     }
 }

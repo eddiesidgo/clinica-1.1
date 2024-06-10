@@ -8,7 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ExpedienteController;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
-use App\Http\Controllers\GeneradordePDFController;
+use App\Http\Controllers\PDFEventsController;
 use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\RecetasController;
 
@@ -46,18 +46,11 @@ Route::middleware([
 
     
     Route::get('consultas/pdf', [ConsultaController::class, 'pdf'])->name('consultas.pdf');
-    // routes/web.php
-
-
     Route::get('events/pdf', [EventController::class, 'pdf'])->name('events.pdf');
-
-
+    Route::get('events/{id}/ComprobantePDF', [PDFEventsController::class, 'generarPDF'])->name('events.comprobante.pdf');
     Route::resource('pacientes', PacienteController::class);
     Route::resource('recetas', RecetasController::class);
-    // Route::get('/recetas/{id}/pdf', [GeneradordePDFController::class, 'generarPDF'])->name('recetas.pdf');
-
     Route::resource('events', EventController::class);
-    Route::resource('pacientes', PacienteController::class);
     Route::resource('expedientes', ExpedienteController::class);
     Route::resource('Recetas', RecetasController::class);
     Route::resource('consultas', ConsultaController::class);

@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ExpedienteController;
+use Illuminate\Support\Facades\DB;
 
 class PacienteController extends Controller
-{
+{    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,7 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $datos['pacientes']=Paciente::paginate(5);
+        $datos['pacientes']=Paciente::paginate(8);
         return view('pacientes.index', $datos);
     }
 
@@ -54,7 +55,8 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        //
+        
+        return redirect('pacientes');
     }
 
     /**
@@ -69,7 +71,7 @@ class PacienteController extends Controller
         $paciente=Paciente::findOrFail($id);
         return view ('pacientes.edit', compact('paciente'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -83,8 +85,7 @@ class PacienteController extends Controller
         $datosPaciente = request()->except('_token', '_method');
         Paciente::where('id', '=', $id)->update($datosPaciente);
 
-        $paciente=Paciente::findOrFail($id);
-        return view ('pacientes.edit', compact('paciente'));
+        return redirect('/pacientes');
     }
 
     /**

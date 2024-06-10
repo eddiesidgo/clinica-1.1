@@ -11,9 +11,11 @@ class Expediente extends Model
     use HasFactory;
 
     protected $table = 'expedientes';
-    protected $primaryKey = 'idExp';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'id_Paciente',
+        'id',
+        'DUI',
+        'nombre',
         'antecedentes',
         'alergias',
         'medicamento',

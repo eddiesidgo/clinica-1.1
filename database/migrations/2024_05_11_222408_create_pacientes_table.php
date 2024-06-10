@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 return new class extends Migration
 {
     /**
@@ -14,16 +12,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pacientes', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unique();
+            $table->string('DUI')->unique();
             $table->string('nombre');
             $table->string('genero');
             $table->string('direccion');
             $table->string('telefono');
-            $table->string('correo_electronico')->nullable();
+            $table->string('correo_electronico')->nullable()->unique();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
