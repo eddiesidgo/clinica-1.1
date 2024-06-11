@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Consulta;
+use App\Models\Paciente;
 use App\Models\Event;
-use App\Models\HistorialConsulta;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -16,17 +15,46 @@ class ConsultaController extends Controller
         return view('consultas.index', compact('consultas'));
     }
 
-    //Metodo para el pdf de consulta 
-
-    public function pdf(){
-        $consultas=Consulta::all();
-        $pdf = Pdf::loadView('consultas.pdf', compact('consultas'));
-        return $pdf->stream();
+    // Método para mostrar el formulario de búsqueda
+    public function buscarFormulario()
+    {
+        return view('consultas.buscar');
     }
 
+    // Método para manejar la búsqueda y mostrar el resultado
+    public function buscar(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $paciente = Paciente::where('nombre', 'like', '%' . $nombre . '%')->first();
+
+        if ($paciente) {
+            $consultas = Consulta::with('paciente')->where('id_Cita', $paciente->id)->get();
+            return view('consultas.resultado', compact('consultas', 'paciente'));
+        } else {
+            return redirect()->route('consultas.buscar')->with('error', 'Paciente no encontrado');
+        }
+    }
+
+    // Método para generar el PDF
+    public function generarPDF(Request $request)
+{
+    $nombre = $request->input('nombre');
+    $paciente = Paciente::where('nombre', 'like', '%' . $nombre . '%')->first();
+
+    if ($paciente) {
+        $consultas = Consulta::with('paciente')->where('id_Cita', $paciente->id)->get();
+        $pdf = Pdf::loadView('consultas.historial', compact('consultas', 'paciente')); // Aquí se carga la vista correcta
+        return $pdf->stream();
+    } else {
+        return redirect()->route('consultas.buscar')->with('error', 'Paciente no encontrado');
+    }
+}
+
+    // Métodos existentes
     public function consultar(){
         return view('consultas.consultar');
     }
+
     public function create()
     {
         $dat = Event::all();
@@ -34,11 +62,10 @@ class ConsultaController extends Controller
     }
 
     public function show($idConsulta)
-{
-    $consulta = HistorialConsulta::findOrFail($idConsulta);
-    return view('consultas.show', compact('consulta'));
-}
-
+    {
+        $consulta = Consulta::findOrFail($idConsulta);
+        return view('consultas.show', compact('consulta'));
+    }
 
     public function store(Request $request)
     {
@@ -47,7 +74,7 @@ class ConsultaController extends Controller
             'diagnostico' => 'required|string|max:255',
             'estado' => 'required|string|max:50',
         ]);
-//Hola
+
         Consulta::create($validatedData);
 
         return redirect('consultas')->with('mensaje', 'Consulta creada con éxito.');
@@ -79,7 +106,4 @@ class ConsultaController extends Controller
         Consulta::destroy($id);
         return redirect('/consultas')->with('mensaje', 'Consulta eliminada con éxito');
     }
-
-
-
 }

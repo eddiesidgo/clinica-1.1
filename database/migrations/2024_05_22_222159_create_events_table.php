@@ -17,8 +17,6 @@ return new class extends Migration
             $table->id()->unique();
             $table->string('DUI')->nullable();
             $table->foreign('DUI')->references('DUI')->on('pacientes')->onDelete('cascade');
-            $table->unsignedBigInteger('id_Paciente');
-            $table->foreign('id_Paciente')->references('id')->on('pacientes')->onDelete('cascade');
             $table->string('nombre');
             $table->string('event');
             $table->datetime('start_date');

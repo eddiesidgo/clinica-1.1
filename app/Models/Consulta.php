@@ -29,5 +29,11 @@ class Consulta extends Model
     public function setUpdatedAtAttribute($value)
     {
         // No hagas nada, esto evitará que Laravel intente establecer 'updated_at'
+        //Okis
+    }
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class, 'id_Cita', 'id');
     }
 }

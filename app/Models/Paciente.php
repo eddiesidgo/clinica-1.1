@@ -20,4 +20,9 @@ class Paciente extends Model
         'correo_electronico',
         'timestamps'
     ];
+
+    public function consultas()
+    {
+        return $this->hasMany(Consulta::class, 'id_Cita', 'id');
+    }
 }

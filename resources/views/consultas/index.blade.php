@@ -20,7 +20,9 @@
 @endrole
 <a href="{{route('consultas.pdf')}}" class="btn btn-success" target="_blank">Reporte Consultas</a>
 
-<a href="{{ route('#') }}" class="btn btn-success">Reporte Historial Consultas</a>
+<a href="{{ route('consultas.buscar') }}"class="btn btn-warning">Buscar Historial</>
+
+
 
 <br><br>
 <table class="table" id="table">

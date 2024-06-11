@@ -61,7 +61,7 @@ class EventController extends Controller
         $datosEvents = request()->except('_token');
         Event::insert($datosEvents);
         //return response()->json($datosPaciente);
-        //return redirect('pacientes')->with('mensaje', 'Empleado agregado con exito');
+        //return redirect('pacientes')->with('mensaje', 'Cita agregada con exito');
 
         return redirect('events');
     }

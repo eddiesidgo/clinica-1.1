@@ -37,20 +37,23 @@ Route::middleware([
 ])->group(function () {
     $controller_path = 'App\Http\Controllers';
 
+    $controller_path = 'App\Http\Controllers';
+
     Route::get('/', $controller_path . '\pages\HomePage@index')->name('pages-home');
     Route::get('/page-2', $controller_path . '\pages\Page2@index')->name('pages-page-2');
 
-    // ieRoute::get('/pacntes', function () {
-    //     return view('pacientes.index');
-    // });
+    // Rutas para las consultas
+    Route::get('consultas/buscar', [ConsultaController::class, 'buscarFormulario'])->name('consultas.buscar');
+    Route::post('consultas/buscar', [ConsultaController::class, 'buscar'])->name('consultas.buscar.resultado');
+    Route::post('consultas/historial', [ConsultaController::class, 'generarPDF'])->name('consultas.historial');
 
-    
+    // Otras rutas para los recursos
     Route::get('consultas/pdf', [ConsultaController::class, 'pdf'])->name('consultas.pdf');
-    Route::get('events/pdf', [EventController::class, 'pdf'])->name('events.pdf');
-    Route::get('events/{id}/ComprobantePDF', [PDFEventsController::class, 'generarPDF'])->name('events.comprobante.pdf');
     Route::resource('pacientes', PacienteController::class);
     Route::resource('recetas', RecetasController::class);
     Route::resource('events', EventController::class);
+    Route::get('events/{id}/ComprobantePDF', [PDFEventsController::class, 'generarPDF'])->name('events.comprobante.pdf');
+    Route::get('events/pdf', [EventController::class, 'pdf'])->name('events.pdf');
     Route::resource('expedientes', ExpedienteController::class);
     Route::resource('Recetas', RecetasController::class);
     Route::resource('consultas', ConsultaController::class);
