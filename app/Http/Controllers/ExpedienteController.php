@@ -35,29 +35,45 @@ class ExpedienteController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     *
      */
-    
-    public function store(Request $request)
-    {
-        $request->validate([
-            'DUI' => 'required|unique:expedientes|max:10',
-            'nombre' => 'required|string|max:255',
-            'antecedentes' => 'nullable|string|max:255',
-            'alergias' => 'nullable|string|max:255',
-            'medicamento' => 'nullable|string|max:255',
-            'histquirurgico' => 'nullable|string|max:255',
-            'id_Paciente' => 'required|exists:pacientes,id',
-        ], [
-            'DUI.unique' => 'Este DUI ya está registrado.',
-            'DUI.required' => 'El DUI es obligatorio.',
-            'DUI.max' => 'El DUI no debe exceder los :max caracteres.',
-        ]);
 
-        $datosExpediente = $request->except('_token');
-        Expediente::insert($datosExpediente);
-        return redirect('expedientes')->with('mensaje', 'Expediente creado con éxito');
-    }
+
+     
+     public function store(Request $request)
+     {
+         $request->validate([
+             'id_Paciente' => 'required|exists:pacientes,id',
+             'antecedentes' => 'nullable|string|max:255',
+             'alergias' => 'nullable|string|max:255',
+             'medicamento' => 'nullable|string|max:255',
+             'histquirurgico' => 'nullable|string|max:255',
+         ], [
+             'id_Paciente.required' => 'El ID del paciente es obligatorio.',
+             'id_Paciente.exists' => 'El ID del paciente no existe en la base de datos de pacientes.',
+         ]);
+     
+         // Verificar si el DUI ya está registrado en expedientes
+         if (Expediente::where('id_Paciente', $request->id_Paciente)->exists()) {
+             return redirect()->back()->withInput()->withErrors(['id_Paciente' => 'Este paciente ya tiene un expediente registrado.']);
+         }
+     
+         // Intentar crear el expediente
+         try {
+             Expediente::create([
+                 'id_Paciente' => $request->id_Paciente,
+                 'antecedentes' => $request->antecedentes,
+                 'alergias' => $request->alergias,
+                 'medicamento' => $request->medicamento,
+                 'histquirurgico' => $request->histquirurgico,
+             ]);
+     
+             return redirect('expedientes')->with('success_message', 'Expediente creado con éxito');
+         } catch (\Exception $e) {
+             return redirect()->back()->withInput()->withErrors(['error' => 'Error al crear el expediente.']);
+         }
+     }     
+    // Resto de métodos del controlador...
+
 
     /**
      * Display the specified resource.

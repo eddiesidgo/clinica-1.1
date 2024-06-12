@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('expedientes', function (Blueprint $table) {
             $table->id();
+            $table->string('DUI')->nullable();
             $table->string('antecedentes')->nullable();
             $table->string('alergias')->nullable();
             $table->string('medicamento')->nullable();
