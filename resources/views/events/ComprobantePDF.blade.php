@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cita médica</title>
+    <title>Comprobante</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
     body {
@@ -41,7 +41,7 @@
 <body>
     <div class="cita-container">
         <center>
-            <h3>Comprobante de cita médica</h3>
+            <h3>Comprobante de Consulta</h3>
         </center>
         <div class="cita-item">
             <p class="cita-title">Fecha y Hora:</p>

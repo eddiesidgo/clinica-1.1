@@ -15,21 +15,16 @@ return new class extends Migration
     {
         Schema::create('expedientes', function (Blueprint $table) {
             $table->id();
-            $table->string('DUI')->nullable();
-            $table->foreign('DUI')->references('DUI')->on('pacientes')->onDelete('cascade');
-            $table->string('Nombre')->nullable();
-            $table->text('antecedentes')->nullable();
-            $table->text('alergias')->nullable();
-            $table->text('medicamento')->nullable();
-            $table->text('histquirurgico')->nullable();
+            $table->string('antecedentes')->nullable();
+            $table->string('alergias')->nullable();
+            $table->string('medicamento')->nullable();
+            $table->string('histquirurgico')->nullable();
+            $table->unsignedBigInteger('id_Paciente');
+            $table->foreign('id_Paciente')->references('id')->on('pacientes')->onDelete('cascade');
             $table->timestamps();
         });
     }
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('expedientes');

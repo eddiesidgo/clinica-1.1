@@ -1,12 +1,12 @@
 @extends('layouts.layoutMaster')
 
-@section('title', 'Crear Consulta')
+@section('title', 'Crear Expediente')
 
 @section('content')
-<h4>Formulario para crear una nueva Consulta</h4>
+<h4>Formulario para crear un nuevo expediente</h4>
 
-<form action="{{ url('/consultas') }}" method="post" class="mb-3">
+<form action="{{ url('/expedientes') }}" method="post" class="mb-3">
     @csrf
-    @include('consultas.form', ['consulta' => null, 'dat' => $dat])
+    @include('expedientes.form', ['expediente' => null, 'dat' => $dat])
 </form>
 @endsection

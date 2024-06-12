@@ -9,7 +9,6 @@
 @role('doctor')
 <a href="{{ route('consultas.index') }}" class="btn btn-success">Consultas</a>
 @endrole
-<a href="{{url('/events/show') }}" class="btn btn-primary">Lista de citas</a>
 <a href="{{route('events.pdf')}}" class="btn btn-danger" target="_blank">Reporte de Citas</a>
 </div>
 

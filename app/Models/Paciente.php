@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,18 +12,23 @@ class Paciente extends Model
 
     protected $table = 'pacientes';
     protected $fillable = [
-        'id'.
         'DUI',
         'nombre',
         'genero',
         'direccion',
         'telefono',
         'correo_electronico',
-        'timestamps'
     ];
+
+    public function expedientes()
+    {
+        return $this->hasMany(Expediente::class, 'id_Paciente');
+    }
 
     public function consultas()
     {
         return $this->hasMany(Consulta::class, 'id_Cita', 'id');
     }
+
+    
 }

@@ -18,7 +18,7 @@
 @role('secre')
 <a href="{{ url('/consultas/create') }}" class="btn btn-primary">Crear Consulta</a>
 @endrole
-<a href="{{route('consultas.pdf')}}" class="btn btn-success" target="_blank">Reporte Consultas</a>
+<a href="{{url('/events/show') }}" class="btn btn-primary">Lista de Consultas</a>
 
 <a href="{{ route('consultas.buscar') }}"class="btn btn-warning">Buscar Historial</a>
 
@@ -55,6 +55,23 @@
     </tbody>
 </table>
 <script>
+    function ConfirmarEliminar(id) {
+    Swal.fire({
+        title: '¿Deseas borrar?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#198754',
+        cancelButtonColor: '#DC3545',
+        confirmButtonText: 'Sí, borrar',
+        cancelButtonText: 'Cancelar',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete-form-' + id).submit();
+        }
+    });
+}
+
     $(document).ready(function() {
     let table = new DataTable('#table');
     $('#table').DataTable();

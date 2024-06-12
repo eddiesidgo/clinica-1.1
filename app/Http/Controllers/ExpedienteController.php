@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Expediente;
@@ -7,90 +8,90 @@ use App\Models\Paciente;
 
 class ExpedienteController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $datos['expedientes'] = Expediente::with('paciente')->paginate(5);
         return view('expedientes.index', $datos);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         $dat = Paciente::all();
         return view('expedientes.create', compact('dat'));
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        // Validar y obtener el ID del paciente
-        $request->validate([
-            'DUI' => 'required|string',
-            'nombre' => 'required|string',
-            'antecedentes' => 'nullable|string',
-            'alergias' => 'nullable|string',
-            'medicamento' => 'nullable|string',
-            'histquirurgico' => 'nullable|string',
-        ]);
-    
-        // Obtener el paciente asociado usando la relación definida en el modelo
-        $paciente = Paciente::where('nombre', $request->input('nombre'))->first();
-    
-        if (!$paciente) {
-            return back()->withErrors(['nombre' => 'Paciente no encontrado.']);
-        }
-    
-        // Construir los datos del expediente con el ID del paciente
         $datosExpediente = $request->except('_token');
-        $datosExpediente['id'] = $paciente->id;
-    
-        // Insertar el expediente en la base de datos
-        Expediente::create($datosExpediente);
-    
+        Expediente::insert($datosExpediente);
         return redirect('expedientes');
     }
-    
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Expediente  $Expediente
+     * @return \Illuminate\Http\Response
+     */
     public function show(Expediente $expedientes)
     {
-        return redirect('expedientes');
+        //
     }
 
-    public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $idExp
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($idExp)
     {
-        $expediente = Expediente::with('paciente')->findOrFail($id);
-        $dat = Paciente::all();
+        $expediente = Expediente::with('paciente')->findOrFail($idExp);
+        $dat = Paciente::all(); // Asegúrate de que esta línea esté aquí
         return view('expedientes.edit', compact('expediente', 'dat'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $idExp
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $idExp)
-{
-    // Validar y obtener el ID del paciente
-    $request->validate([
-        'DUI' => 'required|string',
-        'nombre' => 'required|string',
-        'antecedentes' => 'nullable|string',
-        'alergias' => 'nullable|string',
-        'medicamento' => 'nullable|string',
-        'histquirurgico' => 'nullable|string',
-    ]);
+    {
+        $expediente = Expediente::findOrFail($idExp);
+        $expediente->update($request->all());
 
-    $nombrePaciente = $request->input('nombre_Paciente');
-    $paciente = Paciente::where('nombre', $nombrePaciente)->first();
-
-    if (!$paciente) {
-        return back()->withErrors(['nombre_Paciente' => 'Paciente no encontrado.']);
+        return redirect('/expedientes')->with('mensaje', 'Expediente actualizado con éxito');
     }
 
-    $datosExpediente = $request->except('_token', 'nombre_Paciente');
-    $datosExpediente['id_Paciente'] = $paciente->id;
-
-    $expediente = Expediente::findOrFail($idExp);
-    $expediente->update($datosExpediente);
-
-    return redirect('/expedientes')->with('mensaje', 'Expediente actualizado con éxito');
-}
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $idExp
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($idExp)
     {
         Expediente::destroy($idExp);
         return redirect('/expedientes');
     }
 }
+
