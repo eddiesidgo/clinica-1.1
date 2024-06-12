@@ -6,6 +6,12 @@
 <div class="mb-3">
     <h4>Formulario para crear un nuevo expediente</h4>
 </div>
+@if($errors->has('id_Paciente'))
+    <div class="alert alert-danger">
+        {{ $errors->first('id_Paciente') }}
+    </div>
+@endif
+
 
 <!-- Campo de búsqueda en el lado superior derecho -->
 <div class="d-flex justify-content-end mb-3">

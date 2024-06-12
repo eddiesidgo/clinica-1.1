@@ -58,21 +58,22 @@ class ExpedienteController extends Controller
          }
      
          // Intentar crear el expediente
-         try {
-             Expediente::create([
-                 'id_Paciente' => $request->id_Paciente,
-                 'antecedentes' => $request->antecedentes,
-                 'alergias' => $request->alergias,
-                 'medicamento' => $request->medicamento,
-                 'histquirurgico' => $request->histquirurgico,
-             ]);
-     
-             return redirect('expedientes')->with('success_message', 'Expediente creado con éxito');
-         } catch (\Exception $e) {
-             return redirect()->back()->withInput()->withErrors(['error' => 'Error al crear el expediente.']);
-         }
+        try {
+            Expediente::create([
+                'id_Paciente' => $request->id_Paciente,
+                'antecedentes' => $request->antecedentes,
+                'alergias' => $request->alergias,
+                'medicamento' => $request->medicamento,
+                'histquirurgico' => $request->histquirurgico,
+            ]);
+
+            return redirect('expedientes')->with('success_message', 'Expediente creado con éxito');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['error' => 'Error al crear el expediente.']);
+        }
+
      }     
-    // Resto de métodos del controlador...
+    
 
 
     /**
