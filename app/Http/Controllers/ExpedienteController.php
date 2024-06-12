@@ -35,12 +35,28 @@ class ExpedienteController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *
      */
+    
     public function store(Request $request)
     {
+        $request->validate([
+            'DUI' => 'required|unique:expedientes|max:10',
+            'nombre' => 'required|string|max:255',
+            'antecedentes' => 'nullable|string|max:255',
+            'alergias' => 'nullable|string|max:255',
+            'medicamento' => 'nullable|string|max:255',
+            'histquirurgico' => 'nullable|string|max:255',
+            'id_Paciente' => 'required|exists:pacientes,id',
+        ], [
+            'DUI.unique' => 'Este DUI ya está registrado.',
+            'DUI.required' => 'El DUI es obligatorio.',
+            'DUI.max' => 'El DUI no debe exceder los :max caracteres.',
+        ]);
+
         $datosExpediente = $request->except('_token');
         Expediente::insert($datosExpediente);
-        return redirect('expedientes');
+        return redirect('expedientes')->with('mensaje', 'Expediente creado con éxito');
     }
 
     /**

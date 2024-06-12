@@ -44,10 +44,11 @@
                 <td>{{ $expediente->medicamento }}</td>
                 <td>{{ $expediente->histquirurgico }}</td>
                 <td>
-                    @role('secre')
+                    @role('doctor')
                     <a href="{{ url('/expedientes/'.$expediente->id.'/edit') }}" class="btn btn-info">Editar</a>
-                    <button class="btn btn-danger" onclick="confirmDelete('{{ $expediente->id }}')">Borrar</button>
                     @endrole
+                    <button class="btn btn-danger" onclick="confirmDelete('{{ $expediente->id }}')">Borrar</button>
+                    
                     <form id="delete-form-{{ $expediente->id }}" action="{{ url('/expedientes/' . $expediente->id) }}" method="POST" style="display: none;">
                         @csrf
                         {{ method_field('DELETE') }}
