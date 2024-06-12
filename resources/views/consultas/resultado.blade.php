@@ -35,7 +35,7 @@
     <form action="{{ route('consultas.historial') }}" method="POST">
         @csrf
         <input type="hidden" name="nombre" value="{{ $paciente->nombre }}">
-        <button type="submit" class="btn btn-primary" target="_blank">Generar PDF</button>
+        <button type="submit" target="_blank" class="btn btn-primary">Generar PDF</button>
     </form>
 </div>
 @endsection
