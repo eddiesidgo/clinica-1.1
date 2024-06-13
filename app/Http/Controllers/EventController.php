@@ -27,11 +27,12 @@ class EventController extends Controller
                 'title' => $nombre,
                 'start' => $event->start_date,
                 'end' => $event->end_date,
-                'url' => '/events/show'
+                'url' => '/citas'
             ];
         } 
         return view('events.index', compact('events'));
     }
+
     public function pdf(){
         $citas=Event::all();
         $pdf = Pdf::loadView('events.pdf', compact('citas'));

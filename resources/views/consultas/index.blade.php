@@ -18,7 +18,7 @@
 @role('secre')
 <a href="{{ url('/consultas/create') }}" class="btn btn-primary">Crear Consulta</a>
 @endrole
-<a href="{{url('/events/show') }}" class="btn btn-primary">Lista de Consultas</a>
+<a href="{{url('/events/show') }}" class="btn btn-primary">Comprobantes</a>
 
 <a href="{{ route('consultas.buscar') }}"class="btn btn-warning">Buscar Historial</a>
 
