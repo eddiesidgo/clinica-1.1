@@ -34,14 +34,14 @@
             <td>{{$event->start_date}}</td>
             <td>{{$event->end_date}}</td>
             <td>
-                <a style="font-size: 8px; margin-bottom: 1mm;" href="{{ url('/events/'.$event->id.'/ComprobantePDF') }}" class="btn btn-danger d-block" target="_blank">Comprobante</a>
-            </td> 
+                <a style="font-size: 8px; margin-bottom: 1mm;" href="{{ url('/events/'.$event->id.'/ComprobantePDF') }}" class="btn btn-danger d-block" target="_blank">Comprobante</a>            </td> 
         </tr>
         @endforeach
     </tbody>
 </table>
 <div class="mb-3">
-<a href="{{url('/events') }}" class="btn btn-secondary">Cancelar</a>
+<a href="{{url('/consultas') }}" class="btn btn-secondary">Cancelar</a>
+
 </div>
 <script>
     

@@ -5,6 +5,7 @@
 <div class="mb-3">
 @role('secre')
 <a href="{{url('/events/create') }}" class="btn btn-info">+ Nueva Cita</a> 
+<a href="{{url('/citas') }}" class="btn btn-warning">Gestionar Citas</a> 
 @endrole
 @role('doctor')
 <a href="{{ route('consultas.index') }}" class="btn btn-success">Consultas</a>

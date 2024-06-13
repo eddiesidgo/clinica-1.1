@@ -76,6 +76,6 @@ $generos = ['Masculino', 'Femenino', 'No Binario'];
         class="btn btn-primary"
         type="submit"
         value="Guardar"/>
-    <a href="{{url('/pacientes') }}" class="btn btn-secondary">Cancelar</a>
+    <a href="{{url('/events') }}" class="btn btn-secondary">Cancelar</a>
 </div>
 

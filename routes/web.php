@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CitasController;
 use App\Http\Controllers\ConsultaController;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,7 @@ Route::middleware([
     Route::resource('pacientes', PacienteController::class);
     Route::resource('recetas', RecetasController::class);
     Route::resource('events', EventController::class);
+    Route::resource('citas', CitasController::class);
     Route::get('events/{id}/ComprobantePDF', [PDFEventsController::class, 'generarPDF'])->name('events.comprobante.pdf');
     Route::get('events/pdf', [EventController::class, 'pdf'])->name('events.pdf');
     Route::resource('expedientes', ExpedienteController::class);
