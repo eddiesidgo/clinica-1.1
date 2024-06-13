@@ -7,6 +7,6 @@
 
 <form action="{{ url('/consultas') }}" method="post" class="mb-3">
     @csrf
-    @include('consultas.form', ['expediente' => null, 'dat' => $dat])
+    @include('consultas.form', ['consulta' => null, 'dat' => $dat])
 </form>
 @endsection
